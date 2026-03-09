@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ChevronRight, ChevronLeft, GraduationCap } from "lucide-react";
+import { ChevronRight, ChevronLeft, GraduationCap, Linkedin } from "lucide-react";
 import { cn } from "../lib/utils";
 
 interface LayoutProps {
@@ -54,7 +54,7 @@ export function Layout({
       </main>
 
       {/* Footer Controls */}
-      <footer className="h-20 border-t border-slate-800 flex items-center justify-between px-6 shrink-0 bg-slate-900/80 backdrop-blur-md z-10">
+      <footer className="h-20 border-t border-slate-800 flex items-center justify-between px-6 shrink-0 bg-slate-900/80 backdrop-blur-md z-10 relative">
         <button
           onClick={onPrev}
           disabled={currentSlide === 0}
@@ -68,6 +68,15 @@ export function Layout({
           <ChevronLeft className="w-5 h-5" />
           Anterior
         </button>
+
+        <div className="absolute left-1/2 -translate-x-1/2 text-slate-400 text-sm hidden sm:flex items-center gap-2 bg-slate-900/50 px-4 py-2 border border-slate-700/50 rounded-full">
+          <span>Criado por <strong>Luiz Chiavini</strong></span>
+          <span className="text-slate-600">•</span>
+          <a href="https://linkedin.com/in/luizchiavini" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-blue-400 hover:text-blue-300 font-medium transition-colors">
+            <Linkedin className="w-4 h-4" />
+            @luizchiavini
+          </a>
+        </div>
 
         <button
           onClick={onNext}
