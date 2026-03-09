@@ -14,6 +14,7 @@ import { Slide11 } from "./components/slides/Slide11";
 import { Slide12 } from "./components/slides/Slide12";
 import { Slide13 } from "./components/slides/Slide13";
 import { Slide14 } from "./components/slides/Slide14";
+import { Slide15 } from "./components/slides/Slide15";
 
 const SLIDES = [
   <Slide1 key="slide1" />,
@@ -30,6 +31,7 @@ const SLIDES = [
   <Slide12 key="slide12" />,
   <Slide13 key="slide13" />,
   <Slide14 key="slide14" />,
+  <Slide15 key="slide15" />,
 ];
 
 function App() {
