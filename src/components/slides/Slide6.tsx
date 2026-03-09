@@ -1,176 +1,110 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { GraphCanvas } from "../GraphCanvas";
 import type { NodeData, EdgeData } from "../../types";
-import { Play, RotateCcw, CheckCircle, XCircle } from "lucide-react";
+import { Twitter, Facebook } from "lucide-react";
 
-// Same Automaton as Slide 3: Ends in "ab"
 const INITIAL_NODES: NodeData[] = [
-  { id: "q0", label: "q0", x: 150, y: 200 },
-  { id: "q1", label: "q1", x: 350, y: 150 },
-  { id: "q2", label: "q2", x: 550, y: 200 },
+  { id: "A", label: "Alice", x: 350, y: 100 },
+  { id: "B", label: "Bob", x: 150, y: 250 },
+  { id: "C", label: "Carlos", x: 550, y: 250 },
 ];
 
-const BASE_EDGES: EdgeData[] = [
-  { id: "e1", source: "q0", target: "q0", directed: true, label: "b" },
-  { id: "e2", source: "q0", target: "q1", directed: true, label: "a" },
-  { id: "e3", source: "q1", target: "q1", directed: true, label: "a" },
-  { id: "e4", source: "q1", target: "q2", directed: true, label: "b" },
-  { id: "e5", source: "q2", target: "q1", directed: true, label: "a" },
-  { id: "e6", source: "q2", target: "q0", directed: true, label: "b" },
+const DIRECTED_EDGES: EdgeData[] = [
+  { id: "e1", source: "A", target: "B", directed: true }, // Alice follows Bob
+  { id: "e2", source: "B", target: "C", directed: true }, // Bob follows Carol
+  { id: "e3", source: "C", target: "A", directed: true }, // Carol follows Alice
+];
+
+const UNDIRECTED_EDGES: EdgeData[] = [
+  { id: "e1", source: "A", target: "B", directed: false }, // Alice is friends with Bob
+  { id: "e2", source: "B", target: "C", directed: false }, // Bob is friends with Carol
 ];
 
 export function Slide6() {
-  const [activeState, setActiveState] = useState<string>("q0");
-  const [highlightedEdge, setHighlightedEdge] = useState<string | null>(null);
-  
-  const [wordInput, setWordInput] = useState("abb");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [simulationResult, setSimulationResult] = useState<"accepted" | "rejected" | null>(null);
-
-  const timeoutRef = useRef<number | null>(null);
-
-  const resetSimulation = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setActiveState("q0");
-    setCurrentIndex(0);
-    setHighlightedEdge(null);
-    setSimulationResult(null);
-    setIsPlaying(false);
-  };
-
-  const advanceStep = (currentState: string, index: number) => {
-    if (index >= wordInput.length) {
-      // Word finished, check if in final state
-      setSimulationResult(currentState === "q2" ? "accepted" : "rejected");
-      setIsPlaying(false);
-      return;
-    }
-
-    const currentLetter = wordInput[index];
-    const validTransition = BASE_EDGES.find(
-      e => e.source === currentState && e.label === currentLetter
-    );
-
-    if (validTransition) {
-      setHighlightedEdge(validTransition.id);
-      
-      // Flash then transition state
-      timeoutRef.current = window.setTimeout(() => {
-        setActiveState(validTransition.target);
-        setHighlightedEdge(null);
-        
-        timeoutRef.current = window.setTimeout(() => {
-          advanceStep(validTransition.target, index + 1);
-          setCurrentIndex(index + 1);
-        }, 600);
-      }, 400);
-    }
-  };
-
-  const startSimulation = () => {
-    if (wordInput.trim() === "") return;
-    resetSimulation();
-    setIsPlaying(true);
-    advanceStep("q0", 0);
-  };
-
-  const nodes = INITIAL_NODES.map(n => ({
-    ...n,
-    highlighted: n.id === activeState || n.id === "q2" // Keep q2 visually distinct as final
-  }));
-
-  const edges = BASE_EDGES.map(e => ({
-    ...e,
-    highlighted: e.id === highlightedEdge
-  }));
+  const [isDirected, setIsDirected] = useState(true);
 
   return (
     <div className="flex flex-col h-full animate-in fade-in duration-500">
       <div className="flex flex-col mb-4">
-        <h2 className="text-3xl font-bold mb-2 tracking-tight">6. Simulação de Cadeias (Palavras)</h2>
+        <h2 className="text-3xl font-bold mb-2 tracking-tight">6. Redes Sociais e a Direção do Grafo</h2>
         <p className="text-slate-300">
-          Vamos testar palavras no Autômato que <strong className="text-white">termina em "ab"</strong>. 
-          O autômato aceita a palavra se, ao fim da fita, ele parar no estado <strong>q2</strong>.
+          Grafos servem para modelar <strong>Relações</strong>. Uma das divisões mais importantes dos grafos é se suas arestas/conexões possuem uma "mão única" ou "mão dupla".
         </p>
       </div>
 
-      <div className="bg-slate-800/80 p-5 rounded-xl border border-slate-700 shadow-sm mb-6 flex flex-col md:flex-row gap-6 items-center">
-        <div className="flex-1 w-full">
-          <label className="block text-sm font-medium text-slate-400 mb-2">Digite uma palavra (apenas a, b):</label>
-          <div className="flex gap-3">
-            <input 
-              type="text" 
-              value={wordInput}
-              onChange={(e) => { setWordInput(e.target.value.toLowerCase().replace(/[^ab]/g, '')); resetSimulation(); }}
-              className="flex-1 bg-slate-900 border border-slate-600 rounded-lg px-4 py-2 text-white font-mono tracking-widest focus:ring-2 focus:ring-blue-500 outline-none transition-all"
-              placeholder="Ex: abba"
-              disabled={isPlaying}
-            />
-            <button
-              onClick={startSimulation}
-              disabled={isPlaying || wordInput.length === 0}
-              className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white px-6 py-2 rounded-lg font-medium flex items-center gap-2 transition-all"
-            >
-              <Play className="w-4 h-4" />
-              Simular
-            </button>
-            <button
-              onClick={resetSimulation}
-              className="bg-slate-700 hover:bg-slate-600 text-slate-300 px-4 py-2 rounded-lg font-medium transition-all"
-              title="Resetar"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
-        <div className="flex-1 w-full shrink-0 flex items-center justify-center">
-          <div className="bg-slate-900 w-full p-4 rounded-lg border border-slate-700 flex flex-col items-center">
-             <span className="text-xs text-slate-500 uppercase tracking-widest font-bold mb-2">Fita de Entrada:</span>
-             <div className="flex gap-1 justify-center flex-wrap">
-               {wordInput.split('').map((char, i) => (
-                 <div 
-                   key={i} 
-                   className={`w-10 h-12 flex flex-col items-center justify-center text-xl font-bold font-mono rounded border transition-all duration-300
-                    ${i < currentIndex ? 'bg-slate-800 text-slate-600 border-slate-700 opacity-50' : 
-                      i === currentIndex ? 'bg-blue-500/20 text-blue-400 border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.3)] scale-110' : 
-                      'bg-slate-800 text-slate-300 border-slate-600'}
-                   `}
-                 >
-                   {char}
-                 </div>
-               ))}
-               {wordInput.length === 0 && <span className="text-slate-600 animate-pulse text-sm my-3">Digite algo...</span>}
-             </div>
-          </div>
-        </div>
+      <div className="flex bg-slate-800/80 p-2 rounded-xl border border-slate-700 w-fit mx-auto mb-8 shadow-sm">
+        <button
+          onClick={() => setIsDirected(true)}
+          className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
+            isDirected 
+              ? 'bg-blue-600/20 text-blue-400 border border-blue-500/50 shadow-sm' 
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 border border-transparent'
+          }`}
+        >
+          <Twitter className="w-5 h-5" />
+          Twitter / Instagram (Direcionado)
+        </button>
+        <button
+          onClick={() => setIsDirected(false)}
+          className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
+            !isDirected 
+              ? 'bg-emerald-600/20 text-emerald-400 border border-emerald-500/50 shadow-sm' 
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50 border border-transparent'
+          }`}
+        >
+          <Facebook className="w-5 h-5" />
+          Facebook / WhatsApp (Não Direcionado)
+        </button>
       </div>
 
-      <div className="flex-1 min-h-[300px] w-full bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden relative shadow-inner">
-        <GraphCanvas initialNodes={nodes} initialEdges={edges} />
-        
-        {simulationResult && (
-          <div className="absolute inset-x-0 bottom-8 flex justify-center animate-in slide-in-from-bottom-5">
-            <div className={`flex items-center gap-3 px-6 py-4 rounded-xl shadow-2xl backdrop-blur-md border ${
-              simulationResult === 'accepted' 
-                ? 'bg-emerald-900/80 border-emerald-500/50 text-emerald-100' 
-                : 'bg-rose-900/80 border-rose-500/50 text-rose-100'
-            }`}>
-              {simulationResult === 'accepted' ? <CheckCircle className="w-8 h-8 text-emerald-400" /> : <XCircle className="w-8 h-8 text-rose-400" />}
-              <div className="flex flex-col">
-                <span className="font-bold text-lg">
-                  {simulationResult === 'accepted' ? "Palavra Aceita!" : "Palavra Rejeitada!"}
-                </span>
-                <span className="text-sm opacity-80">
-                  {simulationResult === 'accepted' 
-                    ? "O autômato parou num estado final (q2)." 
-                    : `O autômato parou em ${activeState}, que não é final.`}
-                </span>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-1 mb-8">
+        <div className="bg-slate-800/50 rounded-2xl border border-slate-700/80 p-6 shadow-sm flex flex-col justify-center">
+          {isDirected ? (
+            <div className="animate-in fade-in slide-in-from-left-4 duration-500">
+              <h3 className="text-2xl font-bold mb-4 text-blue-400">Grafo Direcionado</h3>
+              <p className="text-slate-300 mb-6 text-lg leading-relaxed">
+                As conexões possuem um rumo específico (as setas importam). 
+              </p>
+              <div className="bg-slate-900/50 p-4 border border-slate-700 rounded-xl space-y-3">
+                <p className="text-blue-200 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                  <strong>Linguagem:</strong> Autômatos são estritamente direcionados. O tempo / palavra flui para frente.
+                </p>
+                <p className="text-blue-200 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                  <strong>Rede Social:</strong> Alice segue o Bob inspirada pelos posts dele, mas o Bob não segue Alice de volta.
+                </p>
               </div>
             </div>
+          ) : (
+             <div className="animate-in fade-in slide-in-from-right-4 duration-500">
+              <h3 className="text-2xl font-bold mb-4 text-emerald-400">Grafo Não Direcionado</h3>
+              <p className="text-slate-300 mb-6 text-lg leading-relaxed">
+                As relações são mutualmente bidirecionais por natureza. É o equivalente a uma "mão dupla" ou "linha reta" sem ponta.
+              </p>
+              <div className="bg-slate-900/50 p-4 border border-slate-700 rounded-xl space-y-3">
+                <p className="text-emerald-200 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <strong>Linguagem:</strong> Raramente usados em Teoria da Computação básica. Mais úteis em roteamento de internet e mapas reais.
+                </p>
+                <p className="text-emerald-200 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  <strong>Rede Social:</strong> Se Alice é amiga de Bob no Facebook, Bob é obrigatoriamente amigo numérico da Alice.
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-col">
+          <div className="flex-1 min-h-[400px] w-full bg-slate-800/50 rounded-2xl border border-slate-700/50 overflow-hidden relative shadow-inner">
+            <GraphCanvas 
+               key={isDirected ? "dir" : "undir"} 
+               initialNodes={INITIAL_NODES} 
+               initialEdges={isDirected ? DIRECTED_EDGES : UNDIRECTED_EDGES} 
+            />
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

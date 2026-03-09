@@ -34,12 +34,22 @@
   to { background-position: -600% 0; }
 }
 
+@keyframes play8 {
+  from { background-position: 0 0; }
+  to { background-position: -800% 0; }
+}
+
 .sprite-4 {
   background-size: 400% 100%;
-  animation: play4 0.8s steps(4) infinite;
+  animation: play4 0.6s steps(4) infinite;
 }
 
 .sprite-6 {
   background-size: 600% 100%;
-  animation: play6 0.8s steps(6) infinite;
+  animation: play6 0.6s steps(6) infinite;
+}
+
+.sprite-8 {
+  background-size: 800% 100%;
+  animation: play8 0.8s steps(8) infinite;
 }
