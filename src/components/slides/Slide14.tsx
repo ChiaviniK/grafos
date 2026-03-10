@@ -2,7 +2,7 @@ import { Trophy } from "lucide-react";
 
 export function Slide14() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="flex flex-col mb-8 items-center text-center">
         <div className="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mb-4 ring-4 ring-amber-500/30">
           <Trophy className="w-8 h-8 text-amber-500" />

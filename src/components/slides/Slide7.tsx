@@ -14,7 +14,7 @@ const INITIAL_EDGES: EdgeData[] = [
 
 export function Slide7() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
         <div>
            <h2 className="text-3xl font-bold mb-4 tracking-tight">7. Conceito Formal Formal de Grafo</h2>

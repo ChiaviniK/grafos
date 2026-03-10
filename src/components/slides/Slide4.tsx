@@ -77,7 +77,7 @@ export function Slide4() {
   const mEdges = MINION_EDGES.map(e => ({ ...e, highlighted: e.id === highlightedMinionEdge }));
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="flex flex-col mb-4">
         <h2 className="text-3xl font-bold mb-2 tracking-tight">4. Analogia 2.3: Interação entre Múltiplos Grafos</h2>
         <p className="text-slate-300">

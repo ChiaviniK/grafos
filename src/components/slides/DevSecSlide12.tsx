@@ -24,7 +24,7 @@ export function DevSecSlide12() {
   };
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-4xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-4xl mx-auto w-full">
       <div className="flex items-center justify-between mb-8">
          <div className="flex items-center gap-3">
             <span className="bg-blue-500/20 text-blue-400 font-bold px-3 py-1 rounded-full text-xs tracking-wider border border-blue-500/30 flex items-center gap-1.5"><HelpCircle className="w-3.5 h-3.5"/> FIXAÇÃO</span>

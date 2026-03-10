@@ -2,7 +2,7 @@ import { Briefcase, Target, Clock, Terminal } from "lucide-react";
 
 export function DevSecSlide9() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
       <div className="flex items-center justify-between mb-8">
          <div className="flex items-center gap-3">
             <span className="bg-purple-500/20 text-purple-400 font-bold px-3 py-1 rounded-full text-xs tracking-wider border border-purple-500/30 flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5"/> APS LABORATÓRIO</span>

@@ -2,7 +2,7 @@ import { ShieldCheck, ArrowRight, BookOpen, Rocket } from "lucide-react";
 
 export function DevSecSlide15() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
       <div className="flex flex-col items-center justify-center text-center flex-1">
          
          <div className="relative mb-8">

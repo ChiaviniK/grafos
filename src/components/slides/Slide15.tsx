@@ -2,7 +2,7 @@ import { CheckCircle, Route, FileJson, Combine } from "lucide-react";
 
 export function Slide15() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="flex flex-col items-center mb-8 text-center max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold mb-4 tracking-tight">15. Fechamento e Resumo</h2>
         <p className="text-slate-300 text-lg">

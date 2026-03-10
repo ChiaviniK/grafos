@@ -2,7 +2,7 @@ import { Coffee } from "lucide-react";
 
 export function Slide10() {
   return (
-    <div className="flex flex-col items-center justify-center h-full animate-in fade-in zoom-in duration-700">
+    <div className="flex flex-col items-center justify-center min-h-[100%] flex-1 animate-in fade-in zoom-in duration-700">
       <div className="bg-slate-800/50 p-12 rounded-3xl border border-slate-700 shadow-2xl flex flex-col items-center text-center max-w-lg w-full">
         <div className="w-24 h-24 bg-amber-900/40 rounded-full flex items-center justify-center mb-6 animate-pulse">
           <Coffee className="w-12 h-12 text-amber-500" />

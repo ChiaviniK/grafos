@@ -19,7 +19,7 @@ const INITIAL_EDGES: EdgeData[] = [
 
 export function Slide8() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="flex flex-col mb-6">
         <h2 className="text-3xl font-bold mb-4 tracking-tight">5. Autômatos como Grafos (AFD)</h2>
         <p className="text-slate-300 text-lg mb-6 max-w-4xl">

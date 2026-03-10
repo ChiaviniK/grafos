@@ -66,10 +66,12 @@ export default function SegurancaLesson5() {
       onNext={nextSlide}
       onPrev={prevSlide}
     >
-       <div className="flex-1 overflow-hidden relative" style={{ backgroundImage: "radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%)" }}>
+       <div className="flex-1 relative flex flex-col w-full rounded-3xl overflow-hidden min-h-[600px]" style={{ backgroundImage: "radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%)" }}>
          {/* Slide Content Area */}
-         <div className="absolute inset-x-8 top-16 bottom-8 md:inset-x-24 md:top-24 md:bottom-12 flex items-center justify-center">
-             <CurrentSlideComponent />
+         <div className="flex-1 overflow-y-auto w-full px-4 sm:px-8 md:px-12 lg:px-16 py-6 md:py-12">
+             <div className="min-h-full flex flex-col justify-center">
+                 <CurrentSlideComponent />
+             </div>
          </div>
        </div>
     </Layout>

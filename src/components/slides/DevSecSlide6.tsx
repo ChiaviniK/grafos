@@ -2,7 +2,7 @@ import { PenTool, Box, ShieldCheck, ChevronRight } from "lucide-react";
 
 export function DevSecSlide6() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
       <h2 className="text-4xl font-bold mb-4 tracking-tight text-white flex items-center gap-3">
          A Tríade do Prompt Perfeito
       </h2>

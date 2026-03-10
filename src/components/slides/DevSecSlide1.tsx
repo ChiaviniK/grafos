@@ -2,7 +2,7 @@ import { ShieldCheck, Target, Zap } from "lucide-react";
 
 export function DevSecSlide1() {
   return (
-    <div className="flex flex-col items-center justify-center h-full text-center animate-in fade-in zoom-in duration-500">
+    <div className="flex flex-col items-center justify-center  min-min-h-[100%] flex-1 flex-1  text-center animate-in fade-in zoom-in duration-500">
       
       <div className="relative mb-8">
         <div className="w-40 h-40 bg-emerald-500/10 rounded-full flex items-center justify-center border-4 border-emerald-500/20 shadow-[0_0_80px_rgba(16,185,129,0.2)]">

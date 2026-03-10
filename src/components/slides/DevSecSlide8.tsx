@@ -36,7 +36,7 @@ export function DevSecSlide8() {
   const isPerfectPrompt = selectedRole === 1 && selectedAction === 2 && selectedConstraint === 2;
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-6xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-6xl mx-auto w-full">
       <h2 className="text-4xl font-bold mb-4 tracking-tight text-emerald-400 flex items-center gap-3">
          Construtor Interativo de Prompt
       </h2>

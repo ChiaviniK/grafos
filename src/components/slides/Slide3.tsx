@@ -56,7 +56,7 @@ export function Slide3() {
   }));
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col min-h-[100%] flex-1 animate-in fade-in duration-500">
       <div className="flex flex-col mb-4">
         <h2 className="text-3xl font-bold mb-2 tracking-tight">3. Analogia 2.2: Controles do Jogador</h2>
         <p className="text-slate-300">

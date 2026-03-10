@@ -15,7 +15,7 @@ export function DevSecSlide7() {
   const allRevealed = Object.values(revealed).every(Boolean);
 
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
       <h2 className="text-4xl font-bold mb-4 tracking-tight text-rose-400 flex items-center gap-3">
          <AlertCircle className="w-10 h-10" />
          Desconstruindo um Prompt Ruim

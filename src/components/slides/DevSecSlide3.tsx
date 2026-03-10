@@ -2,7 +2,7 @@ import { Bot, Terminal, Blocks, Cpu } from "lucide-react";
 
 export function DevSecSlide3() {
   return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
+    <div className="flex flex-col  min-min-h-[100%] flex-1 flex-1  animate-in fade-in duration-500">
       <h2 className="text-4xl font-bold mb-6 tracking-tight text-emerald-400 flex items-center gap-4">
          <Bot className="w-10 h-10" />
          O que é um Agente Autônomo?
