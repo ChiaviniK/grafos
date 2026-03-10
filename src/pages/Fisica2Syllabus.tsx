@@ -98,18 +98,28 @@ export function Fisica2Syllabus() {
                 </div>
 
                 <div className="space-y-2">
-                    {current.aulas.map((aula, i) => (
-                        <div key={i} className="flex gap-4 p-4 rounded-xl border border-slate-800 bg-slate-900/50 transition-all hover:border-slate-600">
-                            <div className="flex items-center gap-2 text-slate-500 w-20 shrink-0 font-mono text-sm">
-                                <Calendar className="w-4 h-4" />
-                                Aula {offset + i + 1}
-                            </div>
-                            <div className="flex-1 flex items-center justify-between">
-                                <span className="text-slate-300 font-medium">{aula}</span>
-                                <Lock className="w-4 h-4 text-slate-700 shrink-0 ml-4" />
-                            </div>
-                        </div>
-                    ))}
+                    {current.aulas.map((aula, i) => {
+                        const lessonNum = tab === 0 ? i + 1 : null;
+                        const hasLesson = lessonNum !== null && lessonNum <= 10;
+                        const href = hasLesson ? `/fisica2/aula${lessonNum}` : null;
+                        const inner = (
+                            <>
+                                <div className="flex items-center gap-2 text-slate-500 w-20 shrink-0 font-mono text-sm">
+                                    <Calendar className="w-4 h-4" />
+                                    Aula {offset + i + 1}
+                                </div>
+                                <div className="flex-1 flex items-center justify-between">
+                                    <span className={hasLesson ? "text-slate-100 font-semibold" : "text-slate-300 font-medium"}>{aula}</span>
+                                    {hasLesson
+                                        ? <span className="text-orange-400 text-xs font-bold border border-orange-500/30 bg-orange-500/10 px-2 py-0.5 rounded-full ml-4 shrink-0">▶ Abrir</span>
+                                        : <Lock className="w-4 h-4 text-slate-700 shrink-0 ml-4" />}
+                                </div>
+                            </>
+                        );
+                        return href
+                            ? <Link key={i} to={href} className="flex gap-4 p-4 rounded-xl border border-orange-500/30 bg-orange-950/10 transition-all hover:border-orange-500/60 hover:-translate-y-0.5">{inner}</Link>
+                            : <div key={i} className="flex gap-4 p-4 rounded-xl border border-slate-800 bg-slate-900/50 transition-all hover:border-slate-600">{inner}</div>;
+                    })}
                 </div>
             </div>
         </div>

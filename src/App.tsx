@@ -9,6 +9,15 @@ import { RedesLesson5 } from "./pages/RedesLesson5";
 import { Fisica1Syllabus } from "./pages/Fisica1Syllabus";
 import { Fisica2Syllabus } from "./pages/Fisica2Syllabus";
 import { Fisica3Syllabus } from "./pages/Fisica3Syllabus";
+import { Fisica2Lesson1 } from "./pages/Fisica2Lesson1";
+import { Fisica2Lesson2 } from "./pages/Fisica2Lesson2";
+import { Fisica2Lesson3 } from "./pages/Fisica2Lesson3";
+import { Fisica2Lesson4 } from "./pages/Fisica2Lesson4";
+import { Fisica2Lesson5 } from "./pages/Fisica2Lesson5";
+import { Fisica2Lesson6 } from "./pages/Fisica2Lesson6";
+import { Fisica2Lesson7 } from "./pages/Fisica2Lesson7";
+import { Fisica2Lesson8 } from "./pages/Fisica2Lesson8";
+import { Fisica2Lesson9, Fisica2Lesson10 } from "./pages/Fisica2Lessons9and10";
 import { Fisica1Lesson1 } from "./pages/Fisica1Lesson1";
 import { Fisica1Lesson2 } from "./pages/Fisica1Lesson2";
 import { Fisica1Lesson3 } from "./pages/Fisica1Lesson3";
@@ -47,6 +56,16 @@ function App() {
         <Route path="/fisica1/aula11" element={<Fisica1Lesson11 />} />
         <Route path="/fisica1/aula12" element={<Fisica1Lesson12 />} />
         <Route path="/fisica2" element={<Fisica2Syllabus />} />
+        <Route path="/fisica2/aula1" element={<Fisica2Lesson1 />} />
+        <Route path="/fisica2/aula2" element={<Fisica2Lesson2 />} />
+        <Route path="/fisica2/aula3" element={<Fisica2Lesson3 />} />
+        <Route path="/fisica2/aula4" element={<Fisica2Lesson4 />} />
+        <Route path="/fisica2/aula5" element={<Fisica2Lesson5 />} />
+        <Route path="/fisica2/aula6" element={<Fisica2Lesson6 />} />
+        <Route path="/fisica2/aula7" element={<Fisica2Lesson7 />} />
+        <Route path="/fisica2/aula8" element={<Fisica2Lesson8 />} />
+        <Route path="/fisica2/aula9" element={<Fisica2Lesson9 />} />
+        <Route path="/fisica2/aula10" element={<Fisica2Lesson10 />} />
         <Route path="/fisica3" element={<Fisica3Syllabus />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
