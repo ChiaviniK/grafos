@@ -25,50 +25,56 @@ export function Home() {
            </div>
            
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Card Fisica 1 */}
-              <div className="group relative bg-slate-900 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(244,63,94,0.15)] flex flex-col justify-between overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Telescope className="w-24 h-24 text-rose-500 transform rotate-12" />
+                            {/* Card Fisica 1 */}
+              <a href="/fisica1" className="group relative bg-slate-900 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(244,63,94,0.2)] flex flex-col justify-between overflow-hidden cursor-pointer">
+                 <div className="absolute top-0 right-[-20px] p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Telescope className="w-32 h-32 text-rose-500 transform -rotate-12" />
                  </div>
                  <div className="relative z-10">
                     <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-rose-500/20 transition-colors border border-slate-700 group-hover:border-rose-500/30">
                         <Telescope className="w-6 h-6 text-slate-400 group-hover:text-rose-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Física 1</h3>
+                    <h3 className="text-xl font-bold mb-2 text-slate-100">Física 1</h3>
                     <p className="text-slate-400 text-sm mb-4">Mecânica Clássica e Cinemática (INFO)</p>
                  </div>
-                 <button disabled className="mt-4 bg-slate-800 text-slate-500 py-2 rounded-lg font-semibold w-full cursor-not-allowed">Em Breve</button>
-              </div>
+                 <div className="mt-4 bg-rose-600/10 text-rose-500 group-hover:bg-rose-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-rose-500/30 group-hover:border-rose-500">
+                     Ver Cronograma
+                 </div>
+              </a>
 
               {/* Card Fisica 2 */}
-              <div className="group relative bg-slate-900 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(244,63,94,0.15)] flex flex-col justify-between overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Telescope className="w-24 h-24 text-rose-500 transform rotate-12" />
+              <a href="/fisica2" className="group relative bg-slate-900 border border-slate-800 hover:border-orange-500/50 rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(249,115,22,0.2)] flex flex-col justify-between overflow-hidden cursor-pointer">
+                 <div className="absolute top-0 right-[-20px] p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Telescope className="w-32 h-32 text-orange-500 transform -rotate-12" />
                  </div>
                  <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-rose-500/20 transition-colors border border-slate-700 group-hover:border-rose-500/30">
-                        <Telescope className="w-6 h-6 text-slate-400 group-hover:text-rose-400" />
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-orange-500/20 transition-colors border border-slate-700 group-hover:border-orange-500/30">
+                        <Telescope className="w-6 h-6 text-slate-400 group-hover:text-orange-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Física 2</h3>
-                    <p className="text-slate-400 text-sm mb-4">Termodinâmica e Óptica (AGRO/INFO)</p>
+                    <h3 className="text-xl font-bold mb-2 text-slate-100">Física 2</h3>
+                    <p className="text-slate-400 text-sm mb-4">Termodinâmica e Eletricidade (AGRO/INFO)</p>
                  </div>
-                 <button disabled className="mt-4 bg-slate-800 text-slate-500 py-2 rounded-lg font-semibold w-full cursor-not-allowed">Em Breve</button>
-              </div>
+                 <div className="mt-4 bg-orange-600/10 text-orange-500 group-hover:bg-orange-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-orange-500/30 group-hover:border-orange-500">
+                     Ver Cronograma
+                 </div>
+              </a>
 
               {/* Card Fisica 3 */}
-              <div className="group relative bg-slate-900 border border-slate-800 hover:border-rose-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(244,63,94,0.15)] flex flex-col justify-between overflow-hidden">
-                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Telescope className="w-24 h-24 text-rose-500 transform rotate-12" />
+              <a href="/fisica3" className="group relative bg-slate-900 border border-slate-800 hover:border-amber-500/50 rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(245,158,11,0.2)] flex flex-col justify-between overflow-hidden cursor-pointer">
+                 <div className="absolute top-0 right-[-20px] p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <Telescope className="w-32 h-32 text-amber-500 transform -rotate-12" />
                  </div>
                  <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-rose-500/20 transition-colors border border-slate-700 group-hover:border-rose-500/30">
-                        <Telescope className="w-6 h-6 text-slate-400 group-hover:text-rose-400" />
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-amber-500/20 transition-colors border border-slate-700 group-hover:border-amber-500/30">
+                        <Telescope className="w-6 h-6 text-slate-400 group-hover:text-amber-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Física 3</h3>
-                    <p className="text-slate-400 text-sm mb-4">Eletromagnetismo (AGRO)</p>
+                    <h3 className="text-xl font-bold mb-2 text-slate-100">Física 3</h3>
+                    <p className="text-slate-400 text-sm mb-4">Eletromagnetismo e Física Quântica (AGRO)</p>
                  </div>
-                 <button disabled className="mt-4 bg-slate-800 text-slate-500 py-2 rounded-lg font-semibold w-full cursor-not-allowed">Em Breve</button>
-              </div>
+                 <div className="mt-4 bg-amber-600/10 text-amber-500 group-hover:bg-amber-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-amber-500/30 group-hover:border-amber-500">
+                     Ver Cronograma
+                 </div>
+              </a>
            </div>
         </section>
 

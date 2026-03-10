@@ -6,6 +6,9 @@ import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
 import SegurancaLesson5 from "./pages/SegurancaLesson5";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
 import { RedesLesson5 } from "./pages/RedesLesson5";
+import { Fisica1Syllabus } from "./pages/Fisica1Syllabus";
+import { Fisica2Syllabus } from "./pages/Fisica2Syllabus";
+import { Fisica3Syllabus } from "./pages/Fisica3Syllabus";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
         <Route path="/redes" element={<RedesSyllabus />} />
         <Route path="/redes/aula5" element={<RedesLesson5 />} />
+        <Route path="/fisica1" element={<Fisica1Syllabus />} />
+        <Route path="/fisica2" element={<Fisica2Syllabus />} />
+        <Route path="/fisica3" element={<Fisica3Syllabus />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
