@@ -5,6 +5,7 @@ import { LFALesson4 } from "./pages/LFALesson4";
 import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
 import SegurancaLesson5 from "./pages/SegurancaLesson5";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
+import { RedesLesson5 } from "./pages/RedesLesson5";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/seguranca" element={<SegurancaSyllabus />} />
         <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
         <Route path="/redes" element={<RedesSyllabus />} />
+        <Route path="/redes/aula5" element={<RedesLesson5 />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
