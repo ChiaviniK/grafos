@@ -116,7 +116,7 @@ export function Home() {
               </Link>
 
               {/* Redes */}
-              <div className="group relative bg-slate-900 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] flex flex-col justify-between overflow-hidden">
+              <Link to="/redes" className="group relative bg-slate-900 border border-slate-800 hover:border-blue-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] flex flex-col justify-between overflow-hidden cursor-pointer">
                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                     <Network className="w-24 h-24 text-blue-500 transform rotate-12" />
                  </div>
@@ -124,11 +124,13 @@ export function Home() {
                     <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors border border-slate-700 group-hover:border-blue-500/30">
                         <Network className="w-6 h-6 text-slate-500 group-hover:text-blue-400" />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Redes<br/>Convergentes</h3>
+                    <h3 className="text-xl font-bold mb-2 text-slate-100">Redes<br/>Convergentes</h3>
                     <p className="text-slate-500 text-sm mb-4">Protocolos, Topologia e Infraestrutura</p>
                  </div>
-                 <button disabled className="mt-4 bg-slate-800 text-slate-500 py-2 rounded-lg font-semibold w-full cursor-not-allowed">Em Breve</button>
-              </div>
+                 <button className="mt-4 bg-blue-600/10 text-blue-500 group-hover:bg-blue-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-blue-500/30 group-hover:border-blue-500">
+                     Ver Cronograma
+                 </button>
+              </Link>
 
            </div>
         </section>
