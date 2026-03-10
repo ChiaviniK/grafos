@@ -3,7 +3,7 @@ import { Home } from "./pages/Home";
 import { LFASyllabus } from "./pages/LFASyllabus";
 import { LFALesson4 } from "./pages/LFALesson4";
 import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
-import { SegurancaLesson5 } from "./pages/SegurancaLesson5";
+import SegurancaLesson5 from "./pages/SegurancaLesson5";
 
 function App() {
   return (

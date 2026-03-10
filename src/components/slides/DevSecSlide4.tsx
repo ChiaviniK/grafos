@@ -1,65 +1,90 @@
-import { Code, Terminal, Github, Briefcase, FileText } from "lucide-react";
+import { useState } from "react";
+import { MessageSquare, Bot, ShieldAlert } from "lucide-react";
 
 export function DevSecSlide4() {
-  return (
-    <div className="flex flex-col h-full animate-in fade-in duration-500">
-      
-      <div className="flex items-center gap-3 mb-6">
-         <span className="bg-purple-500/20 text-purple-400 font-bold px-3 py-1 rounded-full text-xs tracking-wider border border-purple-500/30 flex items-center gap-1.5"><Briefcase className="w-3.5 h-3.5"/> APS - Atividade Prática</span>
-         <h2 className="text-3xl font-bold tracking-tight text-white">
-            Dashboard Web para o Scanner
-         </h2>
-      </div>
+  const [activeTab, setActiveTab] = useState<'llm' | 'agent'>('llm');
 
-      <p className="text-slate-400 text-lg mb-8 max-w-3xl">
-         O objetivo deste laboratório é utilizar o <strong>Google Antigravity</strong> para evoluir o nosso script CLI de Port Scanner (Aula 04) para uma ferramenta Web completa e documentada para o seu portfólio.
+  return (
+    <div className="flex flex-col h-full animate-in fade-in duration-500 max-w-5xl mx-auto w-full">
+      <h2 className="text-4xl font-bold mb-4 tracking-tight text-white flex items-center gap-3">
+         LLM Tradicional vs Agente Autônomo
+      </h2>
+      <p className="text-slate-400 text-xl mb-10">
+         Selecione um dos modelos abaixo para entender a arquitetura de execução DevSecOps:
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1 mb-4">
+      {/* Tabs */}
+      <div className="flex gap-4 mb-8">
+         <button 
+            onClick={() => setActiveTab('llm')}
+            className={`flex-1 py-4 px-6 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all ${activeTab === 'llm' ? 'bg-indigo-600 text-white shadow-[0_0_30px_rgba(79,70,229,0.3)]' : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border-2 border-slate-800'}`}
+         >
+            <MessageSquare className="w-6 h-6" />
+            Chatbot Comum (LLM)
+         </button>
+         <button 
+            onClick={() => setActiveTab('agent')}
+            className={`flex-1 py-4 px-6 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 transition-all ${activeTab === 'agent' ? 'bg-emerald-600 text-white shadow-[0_0_30px_rgba(16,185,129,0.3)]' : 'bg-slate-900 text-slate-400 hover:bg-slate-800 border-2 border-slate-800'}`}
+         >
+            <Bot className="w-6 h-6" />
+            Agente Autônomo (Antigravity)
+         </button>
+      </div>
+
+      {/* Content Area */}
+      <div className="flex-1 bg-slate-900 border border-slate-700/80 rounded-3xl p-8 relative overflow-hidden transition-all duration-300">
          
-         {/* Step 1 */}
-         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 relative overflow-hidden flex flex-col">
-            <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center border border-slate-700 mb-6 text-xl font-black text-slate-500">1</div>
-            <h3 className="text-xl font-bold text-slate-200 mb-3 flex items-center gap-2">
-               <Terminal className="w-5 h-5 text-blue-400" /> A Base (CLI)
-            </h3>
-            <p className="text-slate-400 text-sm flex-1">
-               Abra o Antigravity e importe o <code>scanner.py</code>. Primeiramente, peça à IA para adicionar uma funcionalidade de <strong>Banner Grabbing</strong> (Identificar qual serviço exato está rodando na porta aberta, ex: Apache 2.4).
-            </p>
-         </div>
+         {activeTab === 'llm' && (
+            <div className="animate-in fade-in slide-in-from-left-4 h-full flex flex-col justify-center">
+               <div className="absolute top-0 right-0 p-8 opacity-5">
+                  <MessageSquare className="w-64 h-64 text-indigo-500" />
+               </div>
+               
+               <h3 className="text-3xl font-bold text-indigo-400 mb-6 border-b border-indigo-500/20 pb-4 inline-block">Modelo Reativo Isolado</h3>
+               
+               <ul className="space-y-6 text-xl text-slate-300 relative z-10 max-w-3xl">
+                  <li className="flex items-start gap-4">
+                     <span className="bg-indigo-500/20 text-indigo-400 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg">-</span>
+                     <span><strong>Text-in, Text-out:</strong> Você envia um prompt, ele retorna um bloco de texto ou código. A execução depende 100% de você copiar e colar.</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <span className="bg-indigo-500/20 text-indigo-400 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg">-</span>
+                     <span><strong>Agnóstico de Contexto Local:</strong> Ele não sabe quais bibliotecas estão instaladas na sua máquina, nem lê o código-fonte inteiro do seu projeto.</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <span className="bg-rose-500/20 text-rose-400 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg">!</span>
+                     <span><strong>Risco de Cópia Cega:</strong> Promove o péssimo hábito de <em>Copy/Paste Driven Development</em>, sem validação arquitetural.</span>
+                  </li>
+               </ul>
+            </div>
+         )}
 
-         {/* Step 2 */}
-         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 relative overflow-hidden flex flex-col">
-            <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center border border-slate-700 mb-6 text-xl font-black text-slate-500">2</div>
-            <h3 className="text-xl font-bold text-slate-200 mb-3 flex items-center gap-2">
-               <Code className="w-5 h-5 text-emerald-400" /> Web (Front-End)
-            </h3>
-            <p className="text-slate-400 text-sm flex-1">
-               Usando a Programação por Intenção, direcione o agente a construir uma interface gráfica usando Flask ou FastAPI com React/Tailwind. Exija que o campo de IP do alvo seja <strong>sanitizado</strong> contra injeções.
-            </p>
-         </div>
-
-         {/* Step 3 */}
-         <div className="bg-slate-900 border-2 border-purple-500/30 hover:border-purple-500/60 rounded-3xl p-6 relative overflow-hidden flex flex-col transition-colors shadow-[0_0_30px_rgba(168,85,247,0.05)]">
-            <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center border border-purple-500/30 mb-6 text-xl font-black text-purple-400">3</div>
-            <h3 className="text-xl font-bold text-slate-200 mb-3 flex items-center gap-2">
-               <Github className="w-5 h-5 text-slate-100" /> Portfólio (GitHub)
-            </h3>
-            <p className="text-slate-400 text-sm flex-1">
-               Revise o código gerado! Se validado, publique no GitHub. Crie um <code>README.md</code> contendo prints da tela e explique <strong>como a Inteligência Artificial foi utilizada como pilar de assistência</strong> neste desenvolvimento.
-            </p>
-         </div>
-
+         {activeTab === 'agent' && (
+            <div className="animate-in fade-in slide-in-from-right-4 h-full flex flex-col justify-center">
+               <div className="absolute top-0 right-0 p-8 opacity-5">
+                  <Bot className="w-64 h-64 text-emerald-500" />
+               </div>
+               
+               <h3 className="text-3xl font-bold text-emerald-400 mb-6 border-b border-emerald-500/20 pb-4 inline-block">Modelo Proativo Integrado</h3>
+               
+               <ul className="space-y-6 text-xl text-slate-300 relative z-10 max-w-3xl">
+                  <li className="flex items-start gap-4">
+                     <span className="bg-emerald-500/20 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg">✓</span>
+                     <span><strong>Execução Semântica:</strong> Ele <em className="text-emerald-300 font-medium whitespace-nowrap">lê arquivos → altera código → testa → repara dependências</em> em um fluxo contínuo (Loop ReAct).</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <span className="bg-emerald-500/20 text-emerald-400 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg">✓</span>
+                     <span><strong>Integração de SO:</strong> Acesso direto para rodar comandos como <code>pip install flask</code> ou <code>npm run build</code>, acelerando a orquestração do ambiente.</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                     <span className="bg-amber-500/20 text-amber-500 w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5 font-black text-lg"><ShieldAlert className="w-4 h-4" /></span>
+                     <span><strong>Validador Arquitetural (Human-in-the-Loop):</strong> Sua responsabilidade muda de "escrever ifs" para "validar se a lógica estruturada pelo Agente atende os requisitos de segurança da OWASP".</span>
+                  </li>
+               </ul>
+            </div>
+         )}
       </div>
 
-      {/* Footer warning */}
-      <div className="bg-blue-950/30 rounded-2xl p-4 border border-blue-900 sm:flex items-center justify-between">
-         <div className="flex items-center gap-3">
-            <FileText className="w-5 h-5 text-blue-400" />
-            <span className="text-blue-200 text-sm">Tempo estimado: <strong>40 minutos</strong> de laboratório prático.</span>
-         </div>
-      </div>
-      
     </div>
   );
 }
