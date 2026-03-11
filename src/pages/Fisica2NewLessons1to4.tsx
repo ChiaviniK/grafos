@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { PixelQuiz } from "../components/PixelQuiz";
+import { ENEMQuestion } from "../components/ENEMQuestion";
+import { FormulaFlashcard } from "../components/FormulaFlashcard";
+import { PhysicsRunner } from "../components/PhysicsRunner";
 
 function Shell({ title, aula, total, current, onPrev, onNext, children }: {
   title: string; aula: string; total: number; current: number;
@@ -164,6 +167,71 @@ const SEM1: React.FC[] = [
       ]}
     />
   ),
+  // ENEM — Temperatura
+  () => (
+    <ENEMQuestion
+      year={2019} subject="Ciências da Natureza — Física"
+      difficulty="médio"
+      context="Uma solução supersaturada de acetato de sódio pode ser rapidamente cristalizada. Ao tocar no fundo do recipiente ou adicionar um cristal de soluto, ocorre a solidificação em cadeia, que libera calor. A temperatura da solução sobe de ~24°C para ~54°C durante o processo."
+      question="O fenômeno descrito é um exemplo de qual tipo de mudança e qual grandeza física permanece constante durante o processo de cristalização?"
+      options={[
+        {letter:"A", text:"Mudança de estado de gasoso para líquido; temperatura constante."},
+        {letter:"B", text:"Mudança de estado de líquido para sólido; volume constante."},
+        {letter:"C", text:"Mudança de estado de líquido para sólido. O calor liberado aquece o sistema, não havendo patamar de temperatura."},
+        {letter:"D", text:"Mudança de estado de sólido para líquido; temperatura constante."},
+        {letter:"E", text:"Mudança de estado de gasoso para sólido; pressão constante."},
+      ]}
+      correct="C"
+      resolution="A cristalização do acetato de sódio supersaturado é uma solidificação (líquido→sólido) exotérmica. Em soluções supersaturadas, a cristalização libera calor latente de solidificação, aquecendo o sistema de ~24°C para ~54°C. Não há patamar isotérmico como em substâncias puras — a temperatura SOBE com o calor liberado. Gabarito: C."
+    />
+  ),
+  // FLASHCARD — Temperatura
+  () => (
+    <FormulaFlashcard
+      title="🃏 Fórmulas — Temperatura & Escalas"
+      color="orange"
+      cards={[
+        {front:"K = °C + 273,15", back:"Converte Celsius para Kelvin", example:"37°C = 310,15 K (temperatura corporal)", unit:"K (Kelvin)"},
+        {front:"°F = °C × 9/5 + 32", back:"Converte Celsius para Fahrenheit", example:"100°C = 212°F (ebulição da água)", unit:"°F"},
+        {front:"°C = (°F − 32) × 5/9", back:"Converte Fahrenheit para Celsius", example:"98,6°F = 37°C", unit:"°C"},
+        {front:"0 K = −273,15°C", back:"Zero absoluto — temperatura mínima do universo", example:"Hélio líquido: ~4 K = −269°C", unit:""},
+        {front:"T_eq = (T₁+T₂)/2", back:"Temperatura de equilíbrio (massas iguais, mesmo c)", example:"80°C + 20°C → equilíbrio em 50°C", unit:"°C ou K"},
+      ]}
+    />
+  ),
+  // RUNNER — Temperatura
+  () => (
+    <PhysicsRunner
+      character={2}
+      title="🏃 Física Runner — Temperatura!"
+      questions={[
+        {question:"O zero absoluto equivale a:", correct:"-273,15°C", wrongs:["0°C","-100°C"]},
+        {question:"K = °C +", correct:"273,15", wrongs:["100","32"]},
+        {question:"100°C em Fahrenheit é:", correct:"212°F", wrongs:["100°F","373°F"]},
+        {question:"Temperatura mede:", correct:"Energia cinética média das partículas", wrongs:["Quantidade de calor","Massa do objeto"]},
+      ]}
+    />
+  ),
+  // ERROS COMUNS
+  () => (
+    <div className="max-w-3xl mx-auto animate-in fade-in duration-500">
+      <span className="text-xs font-black tracking-widest text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">⚠️ ERROS COMUNS NO ENEM</span>
+      <h2 className="text-3xl font-black text-slate-100 mt-4 mb-5">Armadilhas de Temperatura</h2>
+      <div className="space-y-4">
+        {[
+          {trap:"Confundir calor e temperatura", wrong:"'200°C tem mais calor que 100°C' — ERRADO!", right:"Uma piscina a 30°C tem MAIS energia total que uma xícara a 100°C. Temperatura ≠ quantidade de calor."},
+          {trap:"Usar Celsius em fórmulas termodinâmicas", wrong:"Boyle: P₁V₁=P₂V₂ com T em °C — ERRADO!", right:"Leis dos gases e termodinâmica EXIGEM T em Kelvin. Sempre converta: K = °C + 273,15."},
+          {trap:"Achar que zero absoluto é 0°C", wrong:"'A geladeira está no zero absoluto a 0°C' — ERRADO!", right:"Zero absoluto = 0 K = −273,15°C. 0°C é apenas o ponto de fusão da água."},
+        ].map((e,i) => (
+          <div key={i} className="bg-slate-900 border border-rose-500/20 rounded-2xl p-5">
+            <div className="font-black text-rose-300 text-sm mb-2">🪤 {e.trap}</div>
+            <div className="bg-rose-950/30 rounded-xl p-3 text-xs text-rose-400 mb-2">❌ {e.wrong}</div>
+            <div className="bg-emerald-950/30 rounded-xl p-3 text-xs text-emerald-300">✅ {e.right}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ),
   () => {
     const [stars, setStars] = useState(0);
     return (
@@ -245,6 +313,30 @@ const SEM2: React.FC[] = [
       ]}
     />
   ),
+  () => (
+    <ENEMQuestion year={2022} difficulty="médio"
+      context="Uma geladeira padrão mantém o compartimento interno a −5°C. A temperatura ambiente exterior é de 30°C. Um físico afirma que essa geladeira opera como uma máquina térmica reversa, absorvendo calor do interior frio e liberando calor no exterior quente."
+      question="Convertendo as temperaturas para Kelvin, qual é o rendimento máximo teórico (Carnot) de uma geladeira que opere entre essas temperaturas COMO máquina térmica (ignorando sua operação reversa)?"
+      options={[
+        {letter:"A", text:"η = 1 − 268/303 ≈ 11,6%"},
+        {letter:"B", text:"η = 1 − 303/268 ≈ −13% (impossível — T_fria < T_quente)"},
+        {letter:"C", text:"η = 1 − 30/(-5) = impossível"},
+        {letter:"D", text:"η = (-5+30)/30 ≈ 83,3%"},
+        {letter:"E", text:"η = 268/303 ≈ 88,4%"},
+      ]}
+      correct="A"
+      resolution="Primeiro converta: T_fria = −5+273 = 268 K; T_quente = 30+273 = 303 K. Para uma máquina de Carnot entre essas temperaturas: η = 1 − T_fria/T_quente = 1 − 268/303 ≈ 0,116 = 11,6%. IMPORTANTE: sempre converter para Kelvin nas fórmulas termodinâmicas!"
+    />
+  ),
+  () => (
+    <FormulaFlashcard title="🃏 Fórmulas — Escalas" color="orange"
+      cards={[
+        {front:"K = °C + 273,15", back:"Celsius → Kelvin", example:"0°C = 273,15 K"},
+        {front:"°F = °C×9/5 + 32", back:"Celsius → Fahrenheit", example:"0°C = 32°F"},
+        {front:"°C = (°F−32)×5/9", back:"Fahrenheit → Celsius", example:"212°F = 100°C"},
+      ]}
+    />
+  ),
   () => {
     const [stars, setStars] = useState(0);
     return (
@@ -320,6 +412,30 @@ const SEM3: React.FC[] = [
       questions={[
         {q:"Qual mecanismo de propagação NÃO precisa de matéria?",opts:["Condução","Convecção","Irradiação","Todos precisam"],correct:2,explanation:"Irradiação usa ondas eletromagnéticas — funciona no vácuo. Condução e convecção PRECISAM de meio material."},
         {q:"Café esfria mais rápido em copo de metal que em copo de isopor. Por quê?",opts:["Metal conduz mais calor para fora","Isopor é mais pesado","Metal retém mais calor","O formato do copo importa mais"],correct:0,explanation:"Metal é ótimo condutor térmico — transfere calor do café para o ambiente rapidamente. Isopor é isolante — retém o calor dentro. Por isso caixas de isopor mantêm coisas geladas!"},
+      ]}
+    />
+  ),
+  () => (
+    <ENEMQuestion year={2021} difficulty="fácil"
+      context="Durante um incêndio florestal, a fumaça e os gases quentes sobem rapidamente para as camadas mais altas da atmosfera. Brigadistas em solo sentem calor intenso mesmo a certa distância das chamas, sem contato direto com o fogo."
+      question="Considerando os mecanismos de propagação de calor, quais mecanismos estão presentes respectivamente na subida dos gases quentes e no calor sentido pelos brigadistas a distância?"
+      options={[
+        {letter:"A", text:"Condução e Irradiação"},
+        {letter:"B", text:"Convecção e Condução"},
+        {letter:"C", text:"Convecção e Irradiação"},
+        {letter:"D", text:"Irradiação e Condução"},
+        {letter:"E", text:"Condução e Convecção"},
+      ]}
+      correct="C"
+      resolution="A subida de gases quentes é CONVECÇÃO — transferência por movimento de massa de fluido mais quente (menos denso) subindo. O calor sentido a distância sem contato é IRRADIAÇÃO — ondas eletromagnéticas (infravermelho) emitidas pelo fogo chegando aos brigadistas sem precisar de meio material. Gabarito: C."
+    />
+  ),
+  () => (
+    <FormulaFlashcard title="🃏 Calor & Propagação" color="rose"
+      cards={[
+        {front:"Q = m · c · ΔT", back:"Calor sensível — aquece sem mudar estado", example:"2kg água, ΔT=50°C → Q=418.600J", unit:"J ou cal"},
+        {front:"1 cal = 4,186 J", back:"Conversão entre caloria e Joule", example:"Caloria nutricional = 1 kcal = 4186 J"},
+        {front:"Q flui quente→frio", back:"2ª Lei da Termodinâmica (sentido espontâneo)", example:"Gelo em copo de água → absorve Q do ambiente"},
       ]}
     />
   ),
@@ -421,6 +537,41 @@ const SEM4: React.FC[] = [
       questions={[
         {q:"Um bloco de alumínio (c=900 J/kg·°C) de 0,5 kg esquenta de 25°C para 75°C. Quanto calor absorveu?",opts:["22.500 J","45.000 J","9.000 J","30.000 J"],correct:0,explanation:"Q = 0,5 × 900 × (75−25) = 0,5 × 900 × 50 = 22.500 J. Sempre: Q = m·c·ΔT!"},
         {q:"Se o calor específico da areia é ~840 J/kg·°C e o da água é ~4186 J/kg·°C, qual vai esquentar mais ao sol?",opts:["Água","Areia (menor c = mais ΔT p/ mesmo Q)","Os dois igual","Depende do volume"],correct:1,explanation:"ΔT = Q/(m·c). Menor 'c' → maior ΔT para o mesmo Q e m. Por isso a areia queima muito mais que a água sob o mesmo sol!"},
+      ]}
+    />
+  ),
+  () => (
+    <ENEMQuestion year={2020} difficulty="difícil"
+      context="Uma empresa de panelas alega que seu produto de alumínio aquece o alimento mais rapidamente que panelas de ferro. Dados: c_alumínio = 900 J/(kg·°C), c_ferro = 450 J/(kg·°C). Ambas as panelas têm massa de 1 kg e são aquecidas com a mesma potência de 500 W durante 2 minutos."
+      question="Qual será a variação de temperatura ΔT de cada panela após os 2 minutos, e qual panela terá maior temperatura final?"
+      options={[
+        {letter:"A", text:"ΔT_Al = 67°C e ΔT_Fe = 133°C → Ferro aquece mais"},
+        {letter:"B", text:"ΔT_Al = ΔT_Fe = 100°C → ambas iguais"},
+        {letter:"C", text:"ΔT_Al = 133°C e ΔT_Fe = 67°C → Alumínio aquece mais"},
+        {letter:"D", text:"ΔT_Al = 33°C e ΔT_Fe = 66°C → Ferro aquece mais"},
+        {letter:"E", text:"ΔT_Al = 66°C e ΔT_Fe = 133°C → Ferro aquece mais"},
+      ]}
+      correct="A"
+      resolution="Q total = P×t = 500W × 120s = 60.000 J. ΔT = Q/(m·c). ΔT_Al = 60.000/(1×900) ≈ 67°C. ΔT_Fe = 60.000/(1×450) = 133°C. O FERRO esquenta MAIS (maior ΔT) pois tem menor c — precisa de menos calor para a mesma variação. A afirmação da empresa está INCORRETA! Gabarito: A."
+    />
+  ),
+  () => (
+    <FormulaFlashcard title="🃏 Calorimetria" color="yellow"
+      cards={[
+        {front:"Q = m · c · ΔT", back:"Calor sensível (sem mudança de estado)", example:"1kg água, ΔT=10°C → Q=41.860J", unit:"J"},
+        {front:"ΔT = Q / (m·c)", back:"Variação de temperatura", example:"c menor → ΔT maior para o mesmo Q", unit:"°C ou K"},
+        {front:"c_água = 4186 J/(kg·°C)", back:"Maior calor específico dos líquidos comuns", example:"Por isso o mar regula o clima", unit:"J/(kg·°C)"},
+        {front:"Q_perdido = Q_ganho", back:"Conservação de energia em trocas térmicas", example:"Calorímetro: m₁c₁ΔT₁ = m₂c₂ΔT₂", unit:""},
+      ]}
+    />
+  ),
+  () => (
+    <PhysicsRunner character={0} title="🏃 Runner Calorimetria!"
+      questions={[
+        {question:"Q = m × c × ___ ", correct:"ΔT", wrongs:["P","V"]},
+        {question:"c da Água (J/kg·°C):", correct:"4186", wrongs:["1000","450"]},
+        {question:"Maior c = aquece:", correct:"Mais devagar", wrongs:["Mais rápido","Igual"]},
+        {question:"Q em Joules (SI):", correct:"Joule (J)", wrongs:["Watt","Pascal"]},
       ]}
     />
   ),

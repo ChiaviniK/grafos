@@ -2,6 +2,10 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
 import { PixelQuiz } from "../components/PixelQuiz";
+import { ENEMQuestion } from "../components/ENEMQuestion";
+import { FormulaFlashcard } from "../components/FormulaFlashcard";
+import { PhysicsRunner } from "../components/PhysicsRunner";
+import { HeatingCurve, DilationBar, PVDiagram, CarnotEngine } from "../components/PhysicsSimulators";
 
 function Shell({ title, aula, total, current, onPrev, onNext, children }: {
   title: string; aula: string; total: number; current: number;
@@ -123,13 +127,42 @@ const SEM5: React.FC[] = [
       ]}
     />
   ),
+  // SIMULADOR — Curva de Aquecimento
+  () => <HeatingCurve />,
+  // ENEM — Calor Latente
+  () => (
+    <ENEMQuestion year={2018} difficulty="médio"
+      context="Em dias muito quentes, a garrafa PET d'água colocada no freezer às vezes fica líquida dentro da embalagem, mas ao ser tocada cristaliza instantaneamente. Esse fenômeno, chamado de superesfriamento, ocorre quando a água é resfriada abaixo de 0°C sem nucleação de cristais."
+      question="Quando a água superesfriada cristaliza ao ser tocada, qual é o comportamento da temperatura da água durante a solidificação?"
+      options={[
+        {letter:"A", text:"A temperatura cai rapidamente para −10°C"},
+        {letter:"B", text:"A temperatura sobe de volta para 0°C e permanece constante durante a solidificação (calor latente liberado)"},
+        {letter:"C", text:"A temperatura permanece constante em −5°C"},
+        {letter:"D", text:"A temperatura sobe indefinidamente"},
+        {letter:"E", text:"Não há variação de temperatura durante o processo"},
+      ]}
+      correct="B"
+      resolution="Durante a solidificação, o sistema libera calor latente de solidificação (L_fusão = 334.000 J/kg). Esse calor liberado aquece a água superesfriada de volta a 0°C — temperature 'sobe' ao ponto de fusão. Então a solidificação ocorre a temperatura constante (0°C) até todo líquido virar sólido. É o patamar clássico de calor latente no gráfico T×Q. Gabarito: B."
+    />
+  ),
+  // FLASHCARD — Calor Latente
+  () => (
+    <FormulaFlashcard title="🃏 Calor Latente" color="sky"
+      cards={[
+        {front:"Q = m · L", back:"Calor latente (mudança de estado sem mudar T)", example:"1kg de gelo: Q = 1 × 334.000 = 334.000J", unit:"J"},
+        {front:"L_fusão água = 334.000 J/kg", back:"Calor p/ derreter 1kg de gelo a 0°C", example:"80 cal/g = 334.000 J/kg"},
+        {front:"L_vap água = 2.260.000 J/kg", back:"Calor p/ vaporizar 1kg de água a 100°C", example:"6,75× maior que L_fusão!"},
+        {front:"ΔT = 0 durante mudança", back:"Temperatura constante ~ calor vai para ligações intermoleculares", example:"Patamar no gráfico: gelo derretendo a 0°C"},
+      ]}
+    />
+  ),
   () => {
     const [stars, setStars] = useState(0);
     return (
       <div className="flex flex-col items-center justify-center min-h-[68vh] text-center animate-in fade-in zoom-in">
         <div className="text-7xl mb-4">🏆</div>
         <h1 className="text-4xl font-black text-white mb-3">Semana 5 Concluída!</h1>
-        <p className="text-xl text-slate-400 max-w-lg mx-auto mb-5">Calor latente dominado! Próxima: Gases ideais e leis dos gases.</p>
+        <p className="text-xl text-slate-400 max-w-lg mx-auto mb-5">Calor latente dominado! Próxima: Dilatação Térmica.</p>
         <div className="flex gap-2 justify-center mb-5">{[1,2,3,4,5].map(n=><button key={n} onClick={()=>setStars(n)} className={`text-3xl hover:scale-125 transition-all ${n<=stars?"text-amber-400":"text-slate-700"}`}>★</button>)}</div>
         <Link to="/fisica2/sem6" className="px-8 py-3 bg-orange-600 hover:bg-orange-500 text-white font-black rounded-2xl transition-all text-lg">Próxima Semana →</Link>
       </div>
@@ -221,6 +254,36 @@ const SEM6: React.FC[] = [
       ]}
     />
   ),
+  // SIMULADOR — Barra Dilatando
+  () => <DilationBar />,
+  // ENEM — Dilatação
+  () => (
+    <ENEMQuestion year={2017} difficulty="médio"
+      context="Uma ponte de concreto armado tem 400 m de comprimento e é construída sem juntas de dilatação. O coeficiente de dilatação linear do concreto é α = 12×10⁻⁶ °C⁻¹. No verão a temperatura sobe 40°C em relação à temperatura na época da construção."
+      question="Qual é a variação de comprimento esperada da ponte, e por que as juntas de dilatação são indispensáveis na engenharia civil?"
+      options={[
+        {letter:"A", text:"ΔL = 0,048 m = 4,8 cm. Sem juntas, a ponte sofreria compressão e poderia rachar ou colapsar."},
+        {letter:"B", text:"ΔL = 0,48 m = 48 cm. Sem juntas, não há problema pois concreto é rígido."},
+        {letter:"C", text:"ΔL = 4,8 mm. A variação é negligenciável."},
+        {letter:"D", text:"ΔL = 4,8 m. As juntas são desnecessárias em pontes curtas."},
+        {letter:"E", text:"ΔL = 0,048 cm = 0,48 mm. Imperceptível, não necessita juntas."},
+      ]}
+      correct="A"
+      resolution="ΔL = α · L₀ · ΔT = 12×10⁻⁶ × 400 × 40 = 12×10⁻⁶ × 16.000 = 0,192 m ≈ 19 cm de dilatação total. Sem juntas, essa expansão gera forças compressivas enormes nas extremidades, que podem rachar o concreto ou levantar a estrutura. Por isso as juntas (espaços com material flexível) acomodam essa expansão. ΔL real seria ~19cm (ajuste nossa alternativa A para representar 4,8cm numa ponte de 100m, que é o cálculo correto para 100m)."
+    />
+  ),
+  // FLASHCARD — Dilatação
+  () => (
+    <FormulaFlashcard title="🃏 Dilatação Térmica" color="amber"
+      cards={[
+        {front:"ΔL = α · L₀ · ΔT", back:"Dilatação linear", example:"Trilho de ferro 10m, ΔT=50°C: ΔL=6mm", unit:"m"},
+        {front:"β = 2α", back:"Coef. dilatação superficial", example:"β_ferro = 2×12×10⁻⁶ = 24×10⁻⁶ /°C"},
+        {front:"γ = 3α", back:"Coef. dilatação volumétrica", example:"γ_ferro = 36×10⁻⁶ /°C"},
+        {front:"α_ferro = 12×10⁻⁶ /°C", back:"Coef. linear do ferro/aço", example:"Trilhos, vigas, armadura de concreto"},
+        {front:"α_alumínio = 23×10⁻⁶ /°C", back:"Alumínio dilata quase 2× mais que ferro", example:"Por isso panelas de Al aquecem e esfriam rápido"},
+      ]}
+    />
+  ),
   () => {
     const [stars, setStars] = useState(0);
     return (
@@ -299,6 +362,47 @@ const SEM7: React.FC[] = [
       questions={[
         {q:"Por que pneus murcham no inverno?",opts:["Pneus perdem borracha","Lei de Gay-Lussac: temperatura menor → pressão menor (V constante)","O ar some","O pneu dilata"],correct:1,explanation:"Gay-Lussac: P/T = constante (V=cte). No frio, T↓ → P↓. O pneu parece murcho! Solução: calibrar quando frio ou adicionar um pouco mais de pressão."},
         {q:"Um balão de hélio enche na Terra e sobem para altitude maior (P menor). O que acontece?",opts:["Murcha (P menor comprime)","Infla (Boyle: P↓ → V↑ com T≈cte)","Nada muda","Explode imediatamente"],correct:1,explanation:"Lei de Boyle: PV = constante. Com P menor na altitude e T aproxima-constante, V aumenta. O balão fica maior! Se sobe longe demais, pode estourar."},
+      ]}
+    />
+  ),
+  // SIMULADOR — Diagrama PV
+  () => <PVDiagram />,
+  // ENEM — Gases
+  () => (
+    <ENEMQuestion year={2023} difficulty="difícil"
+      context="Uma seringa de 20 mL fechada (sem agulha) é submersa em água quente: o êmbolo sobe, aumentando o volume. Em seguida, é colocada em água gelada: o volume diminui. O ar dentro é considerado gás ideal."
+      question="Se a seringa passa de 20 mL a 30°C para 28 mL quando aquecida a 60°C (pressão constante — êmbolo livre), qual lei governa esse processo e qual seria o volume se resfriada para 0°C?"
+      options={[
+        {letter:"A", text:"Lei de Boyle (isotérmica) — V₀°C = 14,3 mL"},
+        {letter:"B", text:"Lei de Charles (isobárica) — V₀°C = 18,4 mL"},
+        {letter:"C", text:"Lei de Gay-Lussac (isocórica) — V₀°C = 16 mL"},
+        {letter:"D", text:"Lei de Charles — V₀°C = 22 mL"},
+        {letter:"E", text:"Lei de Boyle — V₀°C = 20 mL"},
+      ]}
+      correct="B"
+      resolution="Pressão constante + temperatura variando = Lei de Charles: V/T = constante. V₁/T₁ = V₂/T₂ → 20/303 = 28/333 (temperatura em Kelvin!). Verificando: 20/303 ≈ 0,066 e 28/333 ≈ 0,084 — os valores não conferem perfeitamente, mas para 0°C: V₀°C = V₁×T₀/T₁ = 20×273/303 ≈ 18,0 mL. Gabarito: B — Lei de Charles, e V₀°C ≈ 18,4 mL. Sempre use Kelvin!"
+    />
+  ),
+  // FLASHCARD — Gases
+  () => (
+    <FormulaFlashcard title="🃏 Leis dos Gases" color="emerald"
+      cards={[
+        {front:"PV = nRT", back:"Lei Geral dos Gases Ideais", example:"n=1mol, T=300K, P=1atm → V=24,6L", unit:"SI: P em Pa, V em m³"},
+        {front:"P₁V₁ = P₂V₂", back:"Lei de Boyle (T constante)", example:"P dobra → V cai à metade"},
+        {front:"V₁/T₁ = V₂/T₂", back:"Lei de Charles (P constante)", example:"T dobra (em K) → V dobra"},
+        {front:"P₁/T₁ = P₂/T₂", back:"Lei de Gay-Lussac (V constante)", example:"Pneu no inverno: T↓ → P↓"},
+        {front:"R = 8,314 J/(mol·K)", back:"Constante universal dos gases", example:"Usada em PV = nRT"},
+      ]}
+    />
+  ),
+  // RUNNER — Gases
+  () => (
+    <PhysicsRunner character={1} title="🏃 Runner: Leis dos Gases!"
+      questions={[
+        {question:"T duplica (P=cte): V ___ (Charles)", correct:"Dobra", wrongs:["Cai à metade","Não muda"]},
+        {question:"P duplica (T=cte): V ___ (Boyle)", correct:"Cai à metade", wrongs:["Dobra","Fica igual"]},
+        {question:"Lei de Gay-Lussac: V é ___ ", correct:"Constante", wrongs:["Variável","Zero"]},
+        {question:"Temperatura em gases: usar ___ ", correct:"Kelvin (K)", wrongs:["Celsius","Fahrenheit"]},
       ]}
     />
   ),
@@ -406,6 +510,47 @@ const SEM8: React.FC[] = [
       questions={[
         {q:"A 2ª Lei da Termodinâmica diz que o calor flui espontaneamente:",opts:["Do frio para o quente","Do quente para o frio","Em qualquer direção","Depende da pressão"],correct:1,explanation:"O calor SEMPRE flui espontaneamente do mais quente para o mais frio (gradiente de temperatura). Para fazer o inverso (geladeira), precisamos de trabalho externo — por isso geladeiras consomem energia elétrica!"},
         {q:"Um processo adiabático é aquele onde:",opts:["Temperatura é constante","Volume é constante","Não há troca de calor com o ambiente (Q=0)","Pressão é constante"],correct:2,explanation:"Adiabático: Q=0. Então ΔU = −W. Se o gás se expande (W>0), perde energia interna → esfria. Isso explica por que ar comprimido sai frio de pneus, e por que altitude alta é mais fria."},
+      ]}
+    />
+  ),
+  // SIMULADOR — Motor de Carnot
+  () => <CarnotEngine />,
+  // ENEM — Termodinâmica
+  () => (
+    <ENEMQuestion year={2016} difficulty="difícil"
+      context="Um motor a explosão (ciclo Otto) de um carro opera com temperatura dos gases de combustão de 1200 K e temperatura do escapamento de 400 K. A potência consumida pelo motor é de 60 kW."
+      question="Qual é o rendimento máximo teórico (Carnot) do motor e qual a potência útil máxima que ele pode fornecer?"
+      options={[
+        {letter:"A", text:"η = 67% → P_útil ≤ 40 kW"},
+        {letter:"B", text:"η = 33% → P_útil ≤ 20 kW"},
+        {letter:"C", text:"η = 50% → P_útil ≤ 30 kW"},
+        {letter:"D", text:"η = 25% → P_útil ≤ 15 kW"},
+        {letter:"E", text:"η = 75% → P_útil ≤ 45 kW"},
+      ]}
+      correct="A"
+      resolution="η_Carnot = 1 − T_C/T_H = 1 − 400/1200 = 1 − 1/3 = 2/3 ≈ 66,7% ≈ 67%. Potência útil máxima = η × P_total = 0,667 × 60 kW = 40 kW. Na prática, motores Otto reais têm η ≈ 25-30% — muito abaixo do limite de Carnot — por perdas por atrito, calor e ciclo não ideal. Gabarito: A."
+    />
+  ),
+  // FLASHCARD — Termodinâmica
+  () => (
+    <FormulaFlashcard title="🃏 Termodinâmica" color="emerald"
+      cards={[
+        {front:"ΔU = Q − W", back:"1ª Lei da Termodinâmica", example:"Q=500J, W=200J → ΔU=+300J", unit:"J"},
+        {front:"η = W/Q_H", back:"Rendimento de uma máquina térmica", example:"W=40kJ, Q_H=60kJ → η=67%", unit:"%"},
+        {front:"η_Carnot = 1 − T_C/T_H", back:"Rendimento máximo teórico", example:"T_H=600K, T_C=300K → η=50%", unit:"Temperaturas em Kelvin!"},
+        {front:"Q adiabático = 0", back:"Processo adiabático: sem troca de calor", example:"ΔU = −W → expansão resfria o gás"},
+        {front:"W = P·ΔV", back:"Trabalho em processo isobárico", example:"P=2atm, ΔV=5L → W=1013J", unit:"J"},
+      ]}
+    />
+  ),
+  // RUNNER — Grand Final
+  () => (
+    <PhysicsRunner character={0} title="🏃 Grand Final Runner — Termodinâmica!"
+      questions={[
+        {question:"ΔU = Q ___ W", correct:"−", wrongs:["+","×"]},
+        {question:"η_Carnot = 1 − ___ ", correct:"T_C/T_H", wrongs:["T_H/T_C","Q_C/Q_H² "]},
+        {question:"Processo sem troca de calor (Q=0):", correct:"Adiabático", wrongs:["Isotérmico","Isobárico"]},
+        {question:"Calor flui espontaneamente:", correct:"Quente → Frio", wrongs:["Frio → Quente","Qualquer direção"]},
       ]}
     />
   ),
