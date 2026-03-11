@@ -95,35 +95,44 @@ export function Fisica3Syllabus() {
                 </div>
 
                 <div className="space-y-3">
-                    {current.aulas.map((row, i) => (
-                        <div key={i} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 md:p-5 hover:border-slate-600 transition-all">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="flex items-center gap-1.5 bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20 text-xs font-bold">
-                                    <Calendar className="w-3 h-3" />
-                                    Semana {row.week}
+                    {current.aulas.map((row, i) => {
+                        const semNum = tab === 0 ? i + 1 : null;
+                        const hasLesson = semNum !== null && semNum <= 8;
+                        const href = hasLesson ? `/fisica3/sem${semNum}` : null;
+                        const inner = (
+                            <>
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="flex items-center gap-1.5 bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20 text-xs font-bold">
+                                        <Calendar className="w-3 h-3" />
+                                        Semana {row.week}
+                                    </div>
+                                    <div className="flex items-center gap-1.5 text-slate-500 text-xs">
+                                        <Users className="w-3 h-3" />
+                                        Aulas {current.aulaStart + i * 2 - 1} e {current.aulaStart + i * 2}
+                                    </div>
+                                    {hasLesson && <span className="ml-auto text-amber-400 text-xs font-bold border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 rounded-full">▶ Abrir</span>}
                                 </div>
-                                <div className="flex items-center gap-1.5 text-slate-500 text-xs">
-                                    <Users className="w-3 h-3" />
-                                    Aulas {current.aulaStart + i * 2 - 1} e {current.aulaStart + i * 2}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                                    <div className={`rounded-xl p-3 border ${hasLesson ? "bg-amber-950/20 border-amber-500/20" : "bg-slate-800/60 border-slate-700/50"}`}>
+                                        <div className="text-xs font-bold text-slate-500 mb-1">Aula {current.aulaStart + i * 2 - 1}</div>
+                                        <p className="text-slate-200 text-sm font-semibold">{row.aula1}</p>
+                                    </div>
+                                    <div className={`rounded-xl p-3 border ${hasLesson ? "bg-amber-950/20 border-amber-500/20" : "bg-slate-800/60 border-slate-700/50"}`}>
+                                        <div className="text-xs font-bold text-slate-500 mb-1">Aula {current.aulaStart + i * 2}</div>
+                                        <p className="text-slate-200 text-sm font-semibold">{row.aula2}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
-                                <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-                                    <div className="text-xs font-bold text-slate-500 mb-1">Aula {current.aulaStart + i * 2 - 1}</div>
-                                    <p className="text-slate-200 text-sm font-semibold">{row.aula1}</p>
+                                <div className="flex items-start gap-2">
+                                    <span className="text-xs font-bold text-slate-600 shrink-0 mt-0.5">🔬</span>
+                                    <p className="text-slate-500 text-xs leading-relaxed">{row.metodologia}</p>
+                                    {!hasLesson && <Lock className="w-3.5 h-3.5 text-slate-700 shrink-0 mt-0.5 ml-auto" />}
                                 </div>
-                                <div className="bg-slate-800/60 rounded-xl p-3 border border-slate-700/50">
-                                    <div className="text-xs font-bold text-slate-500 mb-1">Aula {current.aulaStart + i * 2}</div>
-                                    <p className="text-slate-200 text-sm font-semibold">{row.aula2}</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start gap-2">
-                                <span className="text-xs font-bold text-slate-600 shrink-0 mt-0.5">🔬</span>
-                                <p className="text-slate-500 text-xs leading-relaxed">{row.metodologia}</p>
-                                <Lock className="w-3.5 h-3.5 text-slate-700 shrink-0 mt-0.5 ml-auto" />
-                            </div>
-                        </div>
-                    ))}
+                            </>
+                        );
+                        return href
+                            ? <Link key={i} to={href} className="block bg-amber-950/10 border border-amber-500/30 rounded-2xl p-4 md:p-5 hover:border-amber-500/60 transition-all hover:-translate-y-0.5">{inner}</Link>
+                            : <div key={i} className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 md:p-5 hover:border-slate-600 transition-all">{inner}</div>;
+                    })}
                 </div>
             </div>
         </div>

@@ -30,6 +30,11 @@ import { Fisica1Lesson9 } from "./pages/Fisica1Lesson9";
 import { Fisica1Lesson10 } from "./pages/Fisica1Lesson10";
 import { Fisica1Lesson11 } from "./pages/Fisica1Lesson11";
 import { Fisica1Lesson12 } from "./pages/Fisica1Lesson12";
+import { Fisica3Lesson1 } from "./pages/Fisica3Lesson1";
+import { Fisica3Lesson2 } from "./pages/Fisica3Lesson2";
+import { Fisica3Lesson3, Fisica3Lesson4 } from "./pages/Fisica3Lessons3and4";
+import { Fisica3Lesson5, Fisica3Lesson6 } from "./pages/Fisica3Lessons5and6";
+import { Fisica3Lesson7, Fisica3Lesson8 } from "./pages/Fisica3Lessons7and8";
 
 function App() {
   return (
@@ -67,6 +72,14 @@ function App() {
         <Route path="/fisica2/aula9" element={<Fisica2Lesson9 />} />
         <Route path="/fisica2/aula10" element={<Fisica2Lesson10 />} />
         <Route path="/fisica3" element={<Fisica3Syllabus />} />
+        <Route path="/fisica3/sem1" element={<Fisica3Lesson1 />} />
+        <Route path="/fisica3/sem2" element={<Fisica3Lesson2 />} />
+        <Route path="/fisica3/sem3" element={<Fisica3Lesson3 />} />
+        <Route path="/fisica3/sem4" element={<Fisica3Lesson4 />} />
+        <Route path="/fisica3/sem5" element={<Fisica3Lesson5 />} />
+        <Route path="/fisica3/sem6" element={<Fisica3Lesson6 />} />
+        <Route path="/fisica3/sem7" element={<Fisica3Lesson7 />} />
+        <Route path="/fisica3/sem8" element={<Fisica3Lesson8 />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
