@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Home, CheckCircle2, Circle } from "lucide-react";
+import { PixelQuiz, Sprite } from "../components/PixelQuiz";
 
 function Shell({ title, aula, total, current, onPrev, onNext, children }: {
   title: string; aula: string; total: number; current: number;
@@ -435,6 +436,75 @@ function S15() {
   );
 }
 
+// ── SLIDE 15a: PROFESSOR PIXEL INTRO ─────────────────────────────────────────
+function S15a() {
+  const [step, setStep] = useState(0);
+  const lines = [
+    "Olá! Sou o Professor Pixel! 👾 Vou colocar à prova tudo que você aprendeu hoje!",
+    "Preparei 4 perguntas sobre Eletrostática. Acerte todas e ganhe minha admiração máxima! 🏆",
+    "Para cada resposta correta eu pulo de alegria... Para cada erro... fica feio! 😅",
+    "Pronto? Clique em 'Próximo' para começar a Dinâmica! 🎮",
+  ];
+  return (
+    <div className="max-w-2xl mx-auto animate-in fade-in duration-500 text-center">
+      <span className="text-xs font-black tracking-widest text-fuchsia-400 bg-fuchsia-500/10 px-3 py-1 rounded-full border border-fuchsia-500/20">🎮 DINÂMICA COM PIXEL ART</span>
+      <h2 className="text-3xl font-black text-slate-100 mt-5 mb-6">Chegou a hora de jogar!</h2>
+      <div className="bg-slate-950 border-2 border-fuchsia-500/30 rounded-3xl p-8 mb-5">
+        <div className="flex justify-center mb-5">
+          <Sprite character={1} state={step >= 3 ? "run" : "idle"} scale={5} />
+        </div>
+        <div className="bg-slate-900 border border-slate-700 rounded-2xl rounded-tl-none p-4 text-slate-200 font-semibold text-lg relative text-left min-h-[60px]">
+          <div className="absolute -top-3 left-4 w-3 h-3 bg-slate-900 border-l border-t border-slate-700 rotate-45"/>
+          {lines[step]}
+        </div>
+        <div className="flex gap-2 justify-center mt-4">
+          {lines.map((_,i) => <div key={i} className={`w-2.5 h-2.5 rounded-full transition-all ${i <= step ? 'bg-fuchsia-400' : 'bg-slate-700'}`}/>)}
+        </div>
+      </div>
+      {step < lines.length - 1
+        ? <button onClick={() => setStep(s=>s+1)} className="px-6 py-3 bg-fuchsia-800 hover:bg-fuchsia-700 text-white font-black rounded-2xl text-sm transition-all">Continuar 👆</button>
+        : <p className="text-fuchsia-300 font-bold">→ Clique em <strong>Próximo</strong> para iniciar a dinâmica!</p>}
+    </div>
+  );
+}
+
+// ── SLIDE 15b: PIXEL QUIZ DINÂMICA ───────────────────────────────────────────
+function S15b() {
+  return (
+    <PixelQuiz
+      character={1}
+      title="🎮 Dungeon da Eletrostática"
+      subtitle="Responda e veja a reação do Professor Pixel!"
+      questions={[
+        {
+          q: "Ao esfregar um pente de plástico no cabelo, o pente ficou com carga negativa. Como o cabelo ficou?",
+          opts: ["Negativo também — carga se distribui igualmente.","Positivo — perdeu elétrons para o pente.","Neutro — a carga some.","Depende da temperatura ambiente."],
+          correct: 1,
+          explanation: "O pente ganhou elétrons → ficou −. O cabelo PERDEU elétrons → ficou +. Conservação de carga: Q_total = 0 antes e depois!"
+        },
+        {
+          q: "Uma bola metálica A com carga +6 μC toca uma bola B idêntica com carga −2 μC. Após o contato, ambas ficam com:",
+          opts: ["+6 μC e −2 μC (nenhuma muda).","+2 μC cada.","+4 μC e 0 μC.","0 μC cada."],
+          correct: 1,
+          explanation: "Q_total = +6 + (−2) = +4 μC. Esferas idênticas → divide igual: +4/2 = +2 μC cada. Eletrização por contato → mesmo sinal!"
+        },
+        {
+          q: "O touchscreen do seu celular funciona baseado em qual tipo de eletrização?",
+          opts: ["Atrito — você esfrega o dedo na tela.","Contato direto com a carga do chip.","Indução — seu dedo altera a capacitância local sem transferir carga.","Nenhum — funciona com luz infravermelha."],
+          correct: 2,
+          explanation: "Touchscreen capacitivo: seu dedo (condutor) se aproxima dos eletrodos da tela — induza redistribuição de carga que o chip detecta. Sem contato real com a carga!"
+        },
+        {
+          q: "Qual afirmação sobre a Lei de Conservação de Carga está CORRETA?",
+          opts: ["A carga pode ser criada a partir de energia elétrica.","A carga total de um sistema isolado aumenta com o tempo.","Em toda interação, a carga total do sistema isolado permanece constante.","Apenas em semicondutores a carga se conserva."],
+          correct: 2,
+          explanation: "'Conservação de Carga' é lei fundamental: não se cria nem se destrói carga. Em qualquer eletrização, a carga soma zero no sistema isolado. Sempre!"
+        },
+      ]}
+    />
+  );
+}
+
 // ── SLIDE 16: MAPA MENTAL ─────────────────────────────────────────────────────
 function S16() {
   return (
@@ -535,7 +605,7 @@ function S18() {
 }
 
 // ── MONTAGEM ──────────────────────────────────────────────────────────────────
-const SLIDES = [S01,S02,S03,S04,S05,S06,S07,S08,S09,S10,S11,S12,S13,S14,S15,S16,S17,S18];
+const SLIDES = [S01,S02,S03,S04,S05,S06,S07,S08,S09,S10,S11,S12,S13,S14,S15,S15a,S15b,S16,S17,S18];
 
 export function Fisica3Lesson1() {
   const [cur, setCur] = useState(0);

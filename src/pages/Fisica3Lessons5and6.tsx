@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Home } from "lucide-react";
-
+import { CircuitSimulator } from "../components/CircuitSimulator";
+import { PixelQuiz } from "../components/PixelQuiz";
 
 function Shell({ title, aula, total, current, onPrev, onNext, children }: {
   title: string; aula: string; total: number; current: number;
@@ -385,6 +386,43 @@ const SEM6: React.FC[] = [
       </div>
     );
   },
+  // S6b — SIMULADOR INTERATIVO de Circuito
+  () => (
+    <div className="max-w-4xl mx-auto animate-in fade-in duration-500">
+      <span className="text-xs font-black tracking-widest text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">🔌 SIMULADOR INTERATIVO</span>
+      <h2 className="text-3xl font-black text-slate-100 mt-4 mb-2">Circuito em Série vs. Paralelo — ao Vivo!</h2>
+      <p className="text-slate-500 text-sm mb-5">Ajuste tensão e resistências e observe os elétrons (pontos amarelos) fluindo. Alterne entre série e paralelo e veja como tudo muda!</p>
+      <CircuitSimulator />
+    </div>
+  ),
+  // S6c — PIXEL QUIZ Ohm
+  () => (
+    <PixelQuiz
+      character={0}
+      title="🎮 Desafio: 1ª Lei de Ohm"
+      subtitle="Responda correto e veja o Pink Monster celebrar!"
+      questions={[
+        {
+          q: "Em um circuito em paralelo com V = 12V, R₁ = 4Ω e R₂ = 6Ω, qual a corrente total?",
+          opts: ["1,2 A","2 A — a corrente se divide mas a soma é V/R_eq","5 A","0,4 A"],
+          correct: 2,
+          explanation: "R_eq = 1/(1/4 + 1/6) = 1/(0,25+0,167) = 2,4Ω. I_total = V/R_eq = 12/2,4 = 5A. Ou: I₁=12/4=3A, I₂=12/6=2A → soma = 5A ✓"
+        },
+        {
+          q: "Dois resistores de 10Ω em série são conectados a uma bateria de 20V. Qual a corrente?",
+          opts: ["2 A","1 A","0,5 A","4 A"],
+          correct: 1,
+          explanation: "Série: R_eq = 10+10 = 20Ω. i = V/R = 20/20 = 1A. Simples! Em série a corrente é a mesma nos dois resistores."
+        },
+        {
+          q: "Um resistor de 50Ω dissipa 200W. Qual tensão está aplicada a ele?",
+          opts: ["100 V","31,6 V","10000 V","4 V"],
+          correct: 0,
+          explanation: "P = V²/R → V² = P·R = 200×50 = 10000 → V = 100V. Conferindo: i = V/R = 100/50 = 2A, P = i²R = 4×50 = 200W ✓"
+        },
+      ]}
+    />
+  ),
   // S7 Quiz 1
   () => <Quiz n={1} total={3} q="Uma lâmpada tem resistência de 484 Ω e está ligada a 220 V. Qual a corrente e a potência?" opts={["i=0,45A, P=100W","i=0,45A, P=99W — usa P=V²/R","i=2A, P=440W","i=22mA, P=5W"]} correct={1} explanation="✅ B — i = V/R = 220/484 ≈ 0,455 A. P = V²/R = 220²/484 = 48400/484 = 100 W. Ou P = V·i = 220 × 0,455 ≈ 100 W." />,
   // S8 Quiz 2
