@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight, Home, Atom, Zap } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Zap, Target, Book, Info, Gauge, Trophy, AlertCircle } from "lucide-react";
+import { VelocityRace } from "../components/f1/VelocityRace";
 
+// ─── Shared lesson shell ───────────────────────────────────────────────────
 function Shell({ title, aula, total, current, onPrev, onNext, children }: {
     title: string; aula: string; total: number; current: number;
     onPrev: () => void; onNext: () => void; children: React.ReactNode;
@@ -19,165 +21,406 @@ function Shell({ title, aula, total, current, onPrev, onNext, children }: {
                 </div>
                 <span className="text-slate-500 text-xs font-mono">{aula} · {current + 1}/{total}</span>
             </nav>
-            <div className="flex-1 overflow-y-auto px-4 sm:px-8 md:px-16 py-8">{children}</div>
+            <div className="flex-1 overflow-y-auto px-4 sm:px-8 md:px-16 py-8">
+                {children}
+            </div>
             <div className="flex justify-between items-center px-6 py-4 border-t border-slate-800 bg-slate-950/80 backdrop-blur shrink-0">
-                <button onClick={onPrev} disabled={current === 0} className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-700 text-slate-400 hover:border-slate-500 disabled:opacity-30 transition-all font-semibold text-sm"><ChevronLeft className="w-4 h-4" /> Anterior</button>
-                <span className="text-slate-600 text-xs">{title}</span>
-                <button onClick={onNext} disabled={current === total - 1} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 disabled:opacity-30 text-white font-bold transition-all text-sm">Próximo <ChevronRight className="w-4 h-4" /></button>
+                <button onClick={onPrev} disabled={current === 0} className="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-700 text-slate-400 hover:border-slate-500 disabled:opacity-30 transition-all font-semibold text-sm">
+                    <ChevronLeft className="w-4 h-4" /> Anterior
+                </button>
+                <span className="text-slate-600 text-[10px] uppercase font-bold tracking-widest hidden md:inline">{title}</span>
+                <button onClick={onNext} disabled={current === total - 1} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 disabled:opacity-30 text-white font-bold transition-all text-sm">
+                    Próximo <ChevronRight className="w-4 h-4" />
+                </button>
             </div>
         </div>
     );
 }
 
-function S1() {
-    return (
-        <div className="flex flex-col items-center justify-center min-h-[70vh] text-center animate-in fade-in zoom-in duration-700 relative">
-            <div className="absolute inset-0 opacity-10 rounded-3xl" style={{ backgroundImage: "url('/sprites/backgrounds/2/2304x1296.png')", backgroundSize: "cover", imageRendering: "pixelated" }} />
-            <div className="relative z-10">
-                <img src="/sprites/2 Owlet_Monster/Owlet_Monster_Idle_4.png" alt="" className="w-16 h-16 mx-auto mb-6 object-contain" style={{ imageRendering: "pixelated" }} />
-                <span className="bg-rose-500/20 text-rose-400 font-bold px-3 py-1 rounded-full text-xs tracking-widest border border-rose-500/30">FÍSICA 1 · AULA 02</span>
-                <h1 className="text-5xl md:text-7xl font-black text-white my-4 leading-none">Matéria &<br /><span className="text-emerald-400">Energia</span></h1>
-                <p className="text-xl text-slate-400 max-w-xl mx-auto">O que é matéria? O que é energia? Como eles se relacionam? Fundamentos das Ciências da Natureza.</p>
-            </div>
-        </div>
-    );
-}
+// ─── SLIDES ────────────────────────────────────────────────────────────────
 
-function S2() {
-    const [selected, setSelected] = useState<string[]>([]);
-    const items = [
-        { label: "Água 💧", isMateria: true }, { label: "Calor 🔥", isMateria: false },
-        { label: "Pedra 🪨", isMateria: true }, { label: "Luz 💡", isMateria: false },
-        { label: "Ar 🌬️", isMateria: true }, { label: "Som 🎵", isMateria: false },
-        { label: "Ferro ⛓️", isMateria: true }, { label: "Gravidade ⬇️", isMateria: false },
-    ];
-    const toggle = (l: string) => setSelected(p => p.includes(l) ? p.filter(x => x !== l) : [...p, l]);
-    const allCorrect = selected.length === items.filter(i => i.isMateria).length && items.every(it => it.isMateria === selected.includes(it.label));
-    return (
-        <div className="max-w-4xl mx-auto animate-in fade-in duration-500">
-            <div className="flex items-center gap-3 mb-3"><Atom className="w-8 h-8 text-emerald-400" /><h2 className="text-4xl font-black text-slate-100">O que é Matéria?</h2></div>
-            <p className="text-slate-400 text-xl mb-3">Matéria é tudo que tem <strong className="text-white">massa</strong> e ocupa <strong className="text-white">espaço</strong>. Selecione abaixo apenas exemplos de matéria:</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-                {items.map(it => {
-                    const sel = selected.includes(it.label);
-                    return (
-                        <button key={it.label} onClick={() => toggle(it.label)} className={`p-4 rounded-2xl border-2 font-bold text-sm transition-all ${sel ? "border-emerald-500 bg-emerald-950/40 text-emerald-200 scale-105" : "border-slate-700 bg-slate-900 text-slate-400 hover:border-slate-500"}`}>{it.label}</button>
-                    );
-                })}
-            </div>
-            {allCorrect && <div className="bg-emerald-900/30 border border-emerald-500/40 rounded-2xl p-4 text-emerald-200 font-semibold animate-in slide-in-from-bottom-4 duration-400">✅ Correto! Água, pedra, ar e ferro têm massa e ocupam espaço. Calor, luz, som e gravidade são formas de energia ou interações — não são matéria.</div>}
+const S1 = () => (
+    <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+        <div className="mb-6 px-4 py-1 bg-rose-500/10 border border-rose-500/20 rounded-full text-rose-400 text-xs font-black tracking-widest uppercase text-center">
+            Semana 02 · Física 1
         </div>
-    );
-}
+        <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">Cinemática<br/><span className="text-emerald-400 italic">Escalar</span></h1>
+        <p className="max-w-xl text-slate-400 text-xl leading-relaxed">
+            Como descrever o movimento dos corpos sem se preocupar com o porquê eles se movem.
+        </p>
+        <div className="mt-12 flex gap-4">
+             <div className="px-4 py-2 bg-slate-900 border border-slate-700 rounded-xl text-sm font-bold text-slate-300">Δs · v · a · t</div>
+        </div>
+    </div>
+);
 
-function S3() {
-    const [open, setOpen] = useState<number | null>(null);
-    const types = [
-        { name: "Energia Cinética", icon: "🏃", def: "Energia do movimento. Ec = ½mv²", ex: "Carro em movimento, vento, rio." },
-        { name: "Energia Potencial", icon: "⛰️", def: "Energia por posição ou estado. Ep = mgh", ex: "Pedra no alto de um morro, arco esticado." },
-        { name: "Energia Térmica", icon: "🌡️", def: "Agitação das partículas. Q = mcΔT", ex: "Água quente, metal aquecido." },
-        { name: "Energia Elétrica", icon: "⚡", def: "Movimento de cargas. E = P·t", ex: "Computadores, lâmpadas, motores." },
-    ];
-    return (
-        <div className="max-w-4xl mx-auto animate-in fade-in duration-500">
-            <div className="flex items-center gap-3 mb-3"><Zap className="w-8 h-8 text-amber-400" /><h2 className="text-4xl font-black text-slate-100">Formas de Energia</h2></div>
-            <p className="text-slate-400 text-xl mb-8">Energia é a <strong className="text-white">capacidade de realizar trabalho</strong>. Clique em cada tipo:</p>
+const S2 = () => (
+    <div className="max-w-4xl mx-auto space-y-8">
+        <h2 className="text-4xl font-black flex items-center gap-4">
+            <Target className="text-rose-500" /> Repouso ou Movimento?
+        </h2>
+        <div className="p-8 bg-slate-900/50 border border-slate-800 rounded-3xl">
+            <p className="text-xl text-slate-300 italic mb-6">
+                "Um corpo está em movimento quando sua posição muda em relação a um referencial ao longo do tempo."
+            </p>
             <div className="grid md:grid-cols-2 gap-4">
-                {types.map((t, i) => (
-                    <div key={i} onClick={() => setOpen(open === i ? null : i)} className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${open === i ? "border-amber-500 bg-amber-950/30 scale-[1.01]" : "border-slate-700 bg-slate-900/60 hover:border-slate-500"}`}>
-                        <div className="flex items-center gap-3"><span className="text-3xl">{t.icon}</span><h3 className="font-bold text-slate-100 text-xl">{t.name}</h3></div>
-                        {open === i && (
-                            <div className="mt-3 animate-in fade-in duration-300">
-                                <p className="text-slate-300 mb-1">{t.def}</p>
-                                <p className="text-slate-500 text-sm">Exemplos: {t.ex}</p>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
-
-function S4() {
-    const [step, setStep] = useState(0);
-    const steps = [
-        { label: "Topo", desc: "Toda a energia é Potencial (Ep máx, Ec = 0). O pêndulo está parado.", epPct: 100, ecPct: 0 },
-        { label: "Meio", desc: "A energia se divide. Ep = Ec. Velocidade crescendo.", epPct: 50, ecPct: 50 },
-        { label: "Base", desc: "Toda a energia é Cinética (Ec máx, Ep = 0). Velocidade máxima!", epPct: 0, ecPct: 100 },
-    ];
-    const s = steps[step];
-    return (
-        <div className="max-w-3xl mx-auto animate-in fade-in duration-500">
-            <h2 className="text-4xl font-black text-slate-100 mb-3">⚖️ Conservação de Energia</h2>
-            <p className="text-slate-400 text-xl mb-6">Energia não some — ela <strong className="text-white">se transforma</strong>. Use o pêndulo abaixo:</p>
-            <div className="bg-slate-950 border border-slate-700 rounded-3xl p-6 mb-4">
-                <div className="flex gap-4 mb-4 justify-center">
-                    <div className="flex-1 text-center"><div className="text-xs text-blue-400 font-bold mb-1">POTENCIAL (Ep)</div><div className="h-3 bg-slate-800 rounded-full overflow-hidden"><div className="h-full bg-blue-500 rounded-full transition-all duration-700" style={{ width: `${s.epPct}%` }} /></div><span className="text-blue-300 text-sm">{s.epPct}%</span></div>
-                    <div className="flex-1 text-center"><div className="text-xs text-emerald-400 font-bold mb-1">CINÉTICA (Ec)</div><div className="h-3 bg-slate-800 rounded-full overflow-hidden"><div className="h-full bg-emerald-500 rounded-full transition-all duration-700" style={{ width: `${s.ecPct}%` }} /></div><span className="text-emerald-300 text-sm">{s.ecPct}%</span></div>
+                <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-xl">
+                    <h4 className="font-bold text-rose-400 mb-1">Passageiro no Ônibus</h4>
+                    <p className="text-xs text-slate-500">Em repouso em relação ao motorista. Em movimento em relação a um poste na calçada.</p>
                 </div>
-                <p className="text-slate-300 text-center text-lg mb-4">{s.desc}</p>
-                <div className="flex gap-3 justify-center">
-                    {steps.map((st, i) => (
-                        <button key={i} onClick={() => setStep(i)} className={`px-4 py-2 rounded-xl text-sm font-bold border-2 transition-all ${step === i ? "border-blue-500 text-blue-300 bg-blue-950/40" : "border-slate-700 text-slate-400 hover:border-slate-500"}`}>{st.label}</button>
-                    ))}
+                <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl">
+                    <h4 className="font-bold text-emerald-400 mb-1">Terra</h4>
+                    <p className="text-xs text-slate-500">Você está parado agora? Em relação à Terra, sim. Em relação ao Sol, você voa a 30 km/s.</p>
                 </div>
             </div>
         </div>
-    );
-}
-
-function S5() {
-    const [ans, setAns] = useState<number | null>(null);
-    const correct = 1;
-    const opts = ["Sim, pois parte da energia 'some' como calor.", "Não. Luz + calor = energia elétrica consumida. A soma é conservada.", "Sim, porque luz e calor são formas diferentes.", "Não, mas apenas se for lâmpada LED."];
-    return (
-        <div className="max-w-3xl mx-auto animate-in fade-in duration-500">
-            <span className="text-xs font-black tracking-widest text-rose-400 bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">QUIZ</span>
-            <h2 className="text-2xl font-black text-slate-100 mt-4 mb-6">Uma lâmpada elétrica converte energia em luz e calor. Isso viola a Conservação de Energia?</h2>
-            <div className="space-y-3 mb-6">
-                {opts.map((o, i) => {
-                    const cls = ans === null ? "border-slate-700 hover:border-slate-500 bg-slate-900" : i === correct ? "border-emerald-500 bg-emerald-950/30 text-emerald-100 scale-[1.01]" : ans === i ? "border-rose-500 bg-rose-950/30 opacity-70" : "border-slate-800 opacity-25";
-                    return <button key={i} disabled={ans !== null} onClick={() => setAns(i)} className={`w-full text-left p-4 rounded-2xl border-2 transition-all flex gap-3 ${cls}`}><span className="font-black">{["A", "B", "C", "D"][i]})</span><span>{o}</span></button>;
-                })}
-            </div>
-            {ans !== null && <div className={`p-4 rounded-2xl animate-in slide-in-from-bottom-4 ${ans === correct ? "bg-emerald-900/30 border border-emerald-500/40 text-emerald-200" : "bg-rose-900/30 border border-rose-500/40 text-rose-200"}`}><strong>Gabarito: B ✅</strong> — Energia não some. A lâmpada transforma energia elétrica em luz (~10%) + calor (~90%). A soma é sempre igual à entrada.</div>}
+        <div className="flex items-center gap-3 p-4 bg-blue-500/10 rounded-2xl text-blue-400 text-sm">
+            <Info className="shrink-0" />
+            <p><strong>Conclusão:</strong> Movimento e repouso são conceitos **relativos**.</p>
         </div>
-    );
-}
+    </div>
+);
 
-function S6() {
-    return (
-        <div className="max-w-4xl mx-auto animate-in fade-in duration-500">
-            <h2 className="text-4xl font-black text-slate-100 mb-6">📝 Resumo da Aula 02</h2>
-            <div className="grid md:grid-cols-2 gap-4 mb-8">
-                {[
-                    { icon: "⚛️", t: "Matéria", b: "Tem massa e ocupa espaço. Pode ser sólida, líquida ou gasosa." },
-                    { icon: "⚡", t: "Energia", b: "Capacidade de realizar trabalho. Transforma-se, nunca desaparece." },
-                    { icon: "⚖️", t: "Conservação", b: "Energia total de sistema isolado é constante. 1ª Lei da Termodinâmica." },
-                    { icon: "🔗", t: "E = mc²", b: "Einstein: matéria e energia são aspectos da mesma realidade." },
-                ].map((c, i) => (
-                    <div key={i} className="bg-slate-900 border border-slate-700 rounded-2xl p-5 hover:border-rose-500/30 transition-all">
-                        <span className="text-3xl">{c.icon}</span>
-                        <h3 className="font-bold text-slate-100 text-lg my-1">{c.t}</h3>
-                        <p className="text-slate-400 text-sm">{c.b}</p>
+const S3 = () => (
+    <div className="max-w-4xl mx-auto space-y-6">
+        <h2 className="text-3xl font-black">Posição e Trajetória</h2>
+        <p className="text-slate-400">Trajetória é o caminho percorrido por um móvel. Ela também depende do referencial.</p>
+        <div className="grid md:grid-cols-2 gap-8">
+            <div className="aspect-video bg-slate-900 border border-slate-800 rounded-2xl flex items-center justify-center">
+                 <div className="text-center">
+                     <div className="w-4 h-4 bg-rose-500 rounded-full mx-auto mb-2 animate-bounce" />
+                     <p className="text-[10px] text-slate-500 uppercase font-bold">Objeto caindo de um avião</p>
+                     <p className="text-[8px] text-slate-600 mt-1">Piloto vê: Linha Reta | Solo vê: Parábola</p>
+                 </div>
+            </div>
+            <div className="flex flex-col justify-center space-y-4">
+                <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-xl">
+                    <h4 className="text-rose-400 font-bold">Ponto Material</h4>
+                    <p className="text-xs text-slate-500">Dimensões desprezíveis para o cálculo (ex: um carro numa estrada de 500km).</p>
+                </div>
+                <div className="p-4 bg-slate-800/30 border border-slate-700 rounded-xl">
+                    <h4 className="text-blue-400 font-bold">Corpo Extenso</h4>
+                    <p className="text-xs text-slate-500">Dimensões importantes (ex: um trem atravessando uma ponte curta).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+const S4 = () => (
+    <div className="max-w-3xl mx-auto text-center py-10">
+        <h2 className="text-4xl font-black mb-8">O Espaço ($s$) e Deslocamento ($\Delta s$)</h2>
+        <div className="p-8 bg-blue-500/10 border border-blue-500/30 rounded-3xl space-y-6 font-mono">
+            <div className="flex justify-around items-center">
+                <div>
+                   <p className="text-xs text-slate-500 mb-1">Posição Inicial</p>
+                   <span className="text-4xl font-black text-rose-400">S₀</span>
+                </div>
+                <div className="text-2xl text-slate-600">→</div>
+                <div>
+                   <p className="text-xs text-slate-500 mb-1">Posição Final</p>
+                   <span className="text-4xl font-black text-emerald-400">S</span>
+                </div>
+            </div>
+            <div className="pt-6 border-t border-slate-700/50">
+                <p className="text-sm text-slate-400 mb-2">A VARIAÇÃO DO ESPAÇO</p>
+                <div className="text-5xl font-black text-white">Δs = S - S₀</div>
+            </div>
+        </div>
+    </div>
+);
+
+const S5 = () => (
+    <div className="max-w-4xl mx-auto space-y-8">
+        <h2 className="text-3xl font-black">Distância Percorrida vs Deslocamento</h2>
+        <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-4">
+                <div className="p-5 bg-slate-900 border border-slate-800 rounded-2xl border-l-4 border-l-rose-500">
+                    <h4 className="font-bold text-rose-500">Distância (d)</h4>
+                    <p className="text-sm text-slate-400">Total "andado" pelo odômetro. É sempre positiva.</p>
+                </div>
+                <div className="p-5 bg-slate-900 border border-slate-800 rounded-2xl border-l-4 border-l-blue-500">
+                    <h4 className="font-bold text-blue-500">Deslocamento (Δs)</h4>
+                    <p className="text-sm text-slate-400">Distância em linha reta entre início e fim. Pode ser zero!</p>
+                </div>
+            </div>
+            <div className="bg-slate-950 p-6 rounded-3xl border border-slate-800 flex flex-col justify-center">
+                <p className="text-sm text-slate-500 mb-4">💡 Exemplo Clássico:</p>
+                <p className="text-lg">Se você dá uma volta completa numa pista circular de 400m:</p>
+                <div className="mt-4 space-y-2">
+                    <p className="text-rose-400 font-bold">Distância = 400m</p>
+                    <p className="text-blue-400 font-bold">Deslocamento = 0m</p>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+const S6 = () => (
+    <div className="max-w-3xl mx-auto text-center space-y-10">
+        <h2 className="text-4xl font-black text-emerald-400">Velocidade Média (Vₘ)</h2>
+        <div className="p-10 bg-slate-900 border border-slate-800 rounded-full inline-block aspect-square flex items-center justify-center">
+             <div className="flex flex-col items-center gap-1">
+                 <span className="text-5xl font-black text-white">Vₘ = <div className="inline-block flex flex-col items-center"><span className="border-b border-white px-2">Δs</span><span>Δt</span></div></span>
+             </div>
+        </div>
+        <p className="text-xl text-slate-400 leading-relaxed">
+            É a razão entre a variação do espaço e o intervalo de tempo decorrido.
+        </p>
+    </div>
+);
+
+const S7 = () => (
+    <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-black mb-8 flex items-center gap-4">
+            <Gauge className="text-amber-500" /> Conversão de Unidades
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-6">
+                <div className="p-6 bg-slate-900 border-2 border-slate-800 rounded-3xl relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10"><Zap className="w-16 h-16" /></div>
+                    <div className="flex justify-between items-center font-black text-3xl">
+                        <span className="text-rose-400">km/h</span>
+                        <div className="flex flex-col items-center">
+                             <div className="w-12 h-px bg-slate-700" />
+                             <span className="text-xs text-slate-500 font-mono">÷ 3,6</span>
+                             <div className="w-12 h-px bg-slate-700" />
+                        </div>
+                        <span className="text-emerald-400">m/s</span>
                     </div>
-                ))}
+                </div>
+                <div className="p-6 bg-slate-900 border-2 border-slate-800 rounded-3xl relative overflow-hidden group">
+                     <div className="flex justify-between items-center font-black text-3xl">
+                        <span className="text-emerald-400">m/s</span>
+                        <div className="flex flex-col items-center">
+                             <div className="w-12 h-px bg-slate-700" />
+                             <span className="text-xs text-slate-500 font-mono">× 3,6</span>
+                             <div className="w-12 h-px bg-slate-700" />
+                        </div>
+                        <span className="text-rose-400">km/h</span>
+                    </div>
+                </div>
             </div>
-            <p className="text-center text-slate-500 mt-4">Próxima aula: Grandezas Físicas Escalares e Vetoriais 🎯</p>
+            <div className="p-6 bg-amber-500/5 border border-amber-500/20 rounded-2xl">
+                 <h4 className="text-amber-500 font-bold mb-4 uppercase tracking-widest text-xs">Memorize estes:</h4>
+                 <ul className="space-y-2 font-mono text-sm text-slate-400">
+                     <li className="flex justify-between"><span>36 km/h</span> <span>= 10 m/s</span></li>
+                     <li className="flex justify-between"><span>72 km/h</span> <span>= 20 m/s</span></li>
+                     <li className="flex justify-between"><span>90 km/h</span> <span>= 25 m/s</span></li>
+                     <li className="flex justify-between border-t border-slate-800 pt-2 font-black text-slate-200"><span>108 km/h</span> <span>= 30 m/s</span></li>
+                 </ul>
+            </div>
+        </div>
+    </div>
+);
+
+const S8 = () => (
+    <div className="max-w-4xl mx-auto space-y-8">
+        <h2 className="text-3xl font-black">Velocidade Instantânea</h2>
+        <p className="text-slate-400">Diferente da média, é a velocidade em um instante exato ($t$). É o que você vê no velocímetro do carro.</p>
+        <div className="flex justify-center flex-wrap gap-8">
+            <div className="w-48 h-48 rounded-full border-8 border-slate-800 bg-slate-950 flex flex-col items-center justify-center p-6 relative">
+                 <div className="w-full h-1 bg-rose-500 absolute top-1/2 left-1/2 -translate-y-1/2 origin-left rotate-[45deg]" />
+                 <span className="text-3xl font-black mt-10">120</span>
+                 <span className="text-[10px] text-slate-500 uppercase font-black">km/h</span>
+            </div>
+            <div className="max-w-xs space-y-4">
+                 <div className="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                    <h4 className="font-bold text-rose-400 text-sm">Ponto Chave</h4>
+                    <p className="text-xs text-slate-500 mt-1">Se a velocidade instantânea é constante, a velocidade média será igual à instantânea em qualquer intervalo.</p>
+                 </div>
+            </div>
+        </div>
+    </div>
+);
+
+const S9 = () => (
+    <div className="max-w-4xl mx-auto">
+        <div className="mb-4 flex items-center gap-3">
+            <Trophy className="text-amber-500" />
+            <h2 className="text-2xl font-black uppercase tracking-widest text-slate-400">Lab: Corrida de Velocidade</h2>
+        </div>
+        <VelocityRace />
+    </div>
+);
+
+const S10 = () => (
+    <div className="max-w-3xl mx-auto text-center space-y-8">
+        <h2 className="text-4xl font-black text-rose-400">Aceleração Escalar Média (aₘ)</h2>
+        <p className="text-slate-400 text-xl font-medium leading-relaxed">
+            Indica o quanto a velocidade muda com o passar do tempo.
+        </p>
+        <div className="p-10 bg-slate-950 border border-slate-800 rounded-3xl inline-block">
+             <span className="text-5xl font-black text-white">aₘ = <div className="inline-block flex flex-col items-center"><span className="border-b border-white px-2">Δv</span><span>Δt</span></div></span>
+        </div>
+        <div className="mt-8 grid grid-cols-2 gap-4">
+            <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl">
+                 <span className="text-xs text-slate-500 uppercase font-bold">Unidade SI</span>
+                 <p className="text-xl font-black text-rose-400">m/s²</p>
+            </div>
+            <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-center">
+                 <p className="text-xs text-slate-400 italic">"Ganha-se X metros por segundo a cada segundo."</p>
+            </div>
+        </div>
+    </div>
+);
+
+const S11 = () => (
+    <div className="max-w-4xl mx-auto space-y-8">
+        <h2 className="text-3xl font-black">Classificação do Movimento (Sinal de V)</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+                 <h3 className="text-2xl font-bold text-emerald-400 mb-2">Progressivo</h3>
+                 <p className="text-sm text-slate-400 mb-4">O móvel caminha no **mesmo sentido** da orientação da trajetória.</p>
+                 <div className="font-mono text-xl font-black text-emerald-300">V {">"} 0</div>
+            </div>
+            <div className="p-6 bg-rose-500/10 border border-rose-500/30 rounded-2xl">
+                 <h3 className="text-2xl font-bold text-rose-400 mb-2">Retrógrado</h3>
+                 <p className="text-sm text-slate-400 mb-4">O móvel caminha no **sentido oposto** da orientação da trajetória.</p>
+                 <div className="font-mono text-xl font-black text-rose-300">V {"<"} 0</div>
+            </div>
+        </div>
+    </div>
+);
+
+const S12 = () => (
+    <div className="max-w-4xl mx-auto space-y-8 font-sans">
+        <h2 className="text-3xl font-black">Classificação por Variação (V vs a)</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 bg-slate-900 border border-slate-800 rounded-2xl relative overflow-hidden group">
+                 <div className="absolute -right-4 -top-4 w-16 h-16 bg-blue-500/20 rotate-12" />
+                 <h3 className="text-xl font-bold text-white mb-2">Acelerado</h3>
+                 <p className="text-xs text-slate-500 mb-4">O módulo da velocidade **aumenta**. V e "a" têm o mesmo sinal.</p>
+                 <div className="flex gap-2 font-mono text-xs">
+                     <span className="bg-emerald-900/40 px-2 py-1 rounded">V(+), a(+)</span>
+                     <span className="bg-emerald-900/40 px-2 py-1 rounded">V(-), a(-)</span>
+                 </div>
+            </div>
+            <div className="p-6 bg-slate-900 border border-slate-800 rounded-2xl relative overflow-hidden group">
+                 <div className="absolute -right-4 -top-4 w-16 h-16 bg-amber-500/20 rotate-12" />
+                 <h3 className="text-xl font-bold text-white mb-2">Retardado</h3>
+                 <p className="text-xs text-slate-500 mb-4">O módulo da velocidade **diminui**. V e "a" têm sinais opostos.</p>
+                 <div className="flex gap-2 font-mono text-xs">
+                     <span className="bg-rose-900/40 px-2 py-1 rounded">V(+), a(-)</span>
+                     <span className="bg-rose-900/40 px-2 py-1 rounded">V(-), a(+)</span>
+                 </div>
+            </div>
+        </div>
+    </div>
+);
+
+const S13 = () => (
+    <div className="max-w-4xl mx-auto space-y-8">
+        <h2 className="text-3xl font-black flex items-center gap-3">
+             <AlertCircle className="text-rose-500" /> Cuidado: Aceleração Negativa
+        </h2>
+        <div className="p-8 bg-rose-500/5 border border-rose-500/20 rounded-3xl">
+            <p className="text-xl leading-relaxed text-slate-300">
+                Aceleração negativa nem sempre significa frenagem! 
+            </p>
+            <div className="mt-6 p-4 bg-slate-950 rounded-xl border border-slate-800">
+                <p className="text-sm text-slate-400">
+                    Se você está indo para a esquerda (V negativa) e acelera ainda mais para a esquerda (a negativa), o movimento é **Acelerado**.
+                </p>
+            </div>
+        </div>
+    </div>
+);
+
+const S14 = () => {
+    const [ans, setAns] = useState<boolean | null>(null);
+    return (
+        <div className="max-w-3xl mx-auto">
+            <div className="px-4 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-500 text-[10px] font-black uppercase tracking-widest w-fit mb-6">Questão ENEM 2012 (Adaptada)</div>
+            <h2 className="text-2xl font-bold mb-6">Uma Ferrari parte do repouso e atinge 108 km/h em 3 segundos. Qual a sua aceleração média?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <button onClick={() => setAns(false)} className={`p-6 rounded-2xl border-2 transition-all ${ans === false ? 'border-rose-500 bg-rose-950/20' : 'border-slate-800 hover:border-slate-700'}`}>
+                    <span className="block text-2xl font-black">36 m/s²</span>
+                    <span className="text-[10px] text-slate-500 uppercase">Letra A</span>
+                </button>
+                <button onClick={() => setAns(true)} className={`p-6 rounded-2xl border-2 transition-all ${ans === true ? 'border-emerald-500 bg-emerald-950/20' : 'border-slate-800 hover:border-slate-700'}`}>
+                    <span className="block text-2xl font-black">10 m/s²</span>
+                    <span className="text-[10px] text-slate-500 uppercase tracking-widest">Letra B</span>
+                </button>
+            </div>
+            {ans !== null && (
+                <div className={`p-5 rounded-2xl ${ans ? 'bg-emerald-900/20 border border-emerald-500/30' : 'bg-rose-900/20 border border-rose-500/30'}`}>
+                    <p className="text-sm font-medium">
+                        {ans 
+                            ? "✅ Boa! Primeiro convertemos 108 km/h para 30 m/s. Depois: 30 / 3 = 10 m/s²." 
+                            : "❌ Quase! Você esqueceu de converter km/h para m/s primeiro. 108 km/h = 30 m/s."}
+                    </p>
+                </div>
+            )}
         </div>
     );
-}
+};
 
-const SLIDES = [S1, S2, S3, S4, S5, S6];
+const S15 = () => (
+    <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-black mb-10 text-center">Resumo da Unidade</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+             {[
+                 { label: 'Referencial', desc: 'Indispensável' },
+                 { label: 'Deslocamento', desc: 'S - S₀' },
+                 { label: 'Velocidade', desc: 'Δs / Δt' },
+                 { label: 'Aceleração', desc: 'Δv / Δt' }
+             ].map((item, i) => (
+                 <div key={i} className="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-center">
+                      <div className="text-rose-500 mb-2"><Book className="w-5 h-5 mx-auto" /></div>
+                      <h5 className="text-[10px] font-black uppercase text-slate-300">{item.label}</h5>
+                      <p className="text-xs text-slate-500">{item.desc}</p>
+                 </div>
+             ))}
+        </div>
+    </div>
+);
+
+const S16 = () => (
+    <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
+        <div className="w-20 h-20 bg-emerald-600/20 text-emerald-500 rounded-full flex items-center justify-center mb-6">
+            <Zap className="w-10 h-10" />
+        </div>
+        <h2 className="text-5xl font-black mb-4 tracking-tighter">Missão Cumprida!</h2>
+        <p className="text-slate-400 mb-8 max-w-sm">Você dominou os fundamentos da cinemática escalar. Prepare-se para o Movimento Uniforme (M.U.) na próxima aula.</p>
+        <div className="flex gap-4">
+             <Link to="/fisica1" className="px-8 py-3 bg-slate-900 border border-slate-700 rounded-2xl font-bold hover:bg-slate-800 transition-all">Sair</Link>
+             <button onClick={() => window.location.reload()} className="px-8 py-3 bg-emerald-600 rounded-2xl font-bold hover:bg-emerald-500 transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)]">Reiniciar Aula</button>
+        </div>
+    </div>
+);
+
+const SLIDES = [S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16];
+
 export function Fisica1Lesson2() {
     const [cur, setCur] = useState(0);
     const next = useCallback(() => setCur(p => Math.min(p + 1, SLIDES.length - 1)), []);
     const prev = useCallback(() => setCur(p => Math.max(p - 1, 0)), []);
+    
     useEffect(() => {
-        const h = (e: KeyboardEvent) => { if (e.key === "ArrowRight") next(); if (e.key === "ArrowLeft") prev(); };
-        window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h);
+        const h = (e: KeyboardEvent) => { 
+            if (e.key === "ArrowRight") next(); 
+            if (e.key === "ArrowLeft") prev(); 
+        };
+        window.addEventListener("keydown", h); 
+        return () => window.removeEventListener("keydown", h);
     }, [next, prev]);
+
     const C = SLIDES[cur];
-    return <Shell title="Aula 02 — Matéria e Energia" aula="Aula 02" total={SLIDES.length} current={cur} onPrev={prev} onNext={next}><C /></Shell>;
+
+    return (
+        <Shell 
+            title="Aula 02 — Cinemática Escalar" 
+            aula="Semana 02" 
+            total={SLIDES.length} 
+            current={cur} 
+            onPrev={prev} 
+            onNext={next}
+        >
+            <div className="animate-in fade-in slide-in-from-right-4 duration-500">
+                <C />
+            </div>
+        </Shell>
+    );
 }
+

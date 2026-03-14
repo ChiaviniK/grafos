@@ -38,6 +38,8 @@ import { Fisica3Lesson5, Fisica3Lesson6 } from "./pages/Fisica3Lessons5and6";
 import { Fisica3Lesson7, Fisica3Lesson8 } from "./pages/Fisica3Lessons7and8";
 import { Fisica2NewLesson1, Fisica2NewLesson2, Fisica2NewLesson3, Fisica2NewLesson4 } from "./pages/Fisica2NewLessons1to4";
 import { Fisica2NewLesson5, Fisica2NewLesson6, Fisica2NewLesson7, Fisica2NewLesson8 } from "./pages/Fisica2NewLessons5to8";
+import { UnimaxLecture } from "./pages/UnimaxLecture";
+import { TccOrientation } from "./pages/TccOrientation";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -101,6 +103,8 @@ function App() {
           <Route path="/fisica3/sem6" element={<Fisica3Lesson6 />} />
           <Route path="/fisica3/sem7" element={<Fisica3Lesson7 />} />
           <Route path="/fisica3/sem8" element={<Fisica3Lesson8 />} />
+          <Route path="/unimax-ia-energetica" element={<UnimaxLecture />} />
+          <Route path="/unimax-tcc" element={<TccOrientation />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

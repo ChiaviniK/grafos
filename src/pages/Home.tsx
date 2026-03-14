@@ -1,4 +1,4 @@
-import { Telescope, Shield, Network, BrainCircuit, GraduationCap } from "lucide-react";
+import { Telescope, Shield, Network, BrainCircuit, GraduationCap, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Home() {
@@ -137,6 +137,40 @@ export function Home() {
                      Ver Cronograma
                  </button>
               </Link>
+
+              {/* UNIMAX IA Lecture */}
+              <Link to="/unimax-ia-energetica" className="group relative bg-slate-900 border border-slate-800 hover:border-purple-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] flex flex-col justify-between overflow-hidden cursor-pointer">
+                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <BrainCircuit className="w-24 h-24 text-purple-500 transform rotate-12" />
+                 </div>
+                 <div className="relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-purple-500/20 transition-colors border border-slate-700 group-hover:border-purple-500/30">
+                        <BrainCircuit className="w-6 h-6 text-slate-500 group-hover:text-purple-400" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 text-slate-100">IA e Data Centers:<br/>Demanda Energética</h3>
+                    <p className="text-slate-500 text-sm mb-4">Palestra Interativa: Sustentabilidade e Eficiência</p>
+                 </div>
+                 <button className="mt-4 bg-purple-600/10 text-purple-500 group-hover:bg-purple-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-purple-500/30 group-hover:border-purple-500">
+                     Acessar Palestra
+                 </button>
+              </Link>
+
+               {/* TCC Orientation */}
+               <Link to="/unimax-tcc" className="group relative bg-slate-900 border border-slate-800 hover:border-emerald-500/50 rounded-2xl p-6 transition-all hover:shadow-[0_0_30px_rgba(16,185,129,0.15)] flex flex-col justify-between overflow-hidden cursor-pointer">
+                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                     <FileText className="w-24 h-24 text-emerald-500 transform rotate-12" />
+                  </div>
+                  <div className="relative z-10">
+                     <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors border border-slate-700 group-hover:border-emerald-500/30">
+                         <FileText className="w-6 h-6 text-slate-500 group-hover:text-emerald-400" />
+                     </div>
+                     <h3 className="text-xl font-bold mb-2 text-slate-100">Orientação<br/>TCC UNIMAX</h3>
+                     <p className="text-slate-500 text-sm mb-4">Cronograma de 8 semanas e Template Oficial</p>
+                  </div>
+                  <button className="mt-4 bg-emerald-600/10 text-emerald-500 group-hover:bg-emerald-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-emerald-500/30 group-hover:border-emerald-500">
+                      Ver Guia Completo
+                  </button>
+               </Link>
 
            </div>
         </section>
