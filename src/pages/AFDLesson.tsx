@@ -364,7 +364,7 @@ export function AFDLesson() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-blue-500/30 overflow-hidden relative">
+    <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-blue-500/30 overflow-x-hidden relative flex flex-col">
       {/* Background FX identical to previous lectures for unity */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(15,23,42,0)_0%,rgba(2,6,23,1)_100%)] opacity-80" />
@@ -402,7 +402,7 @@ export function AFDLesson() {
         </div>
       </header>
 
-      <main className="relative z-10 container mx-auto px-6 py-6 md:py-12 flex items-center justify-center h-[calc(100vh-160px)]">
+      <main className="relative z-10 container mx-auto px-4 py-8 md:py-12 flex items-center justify-center flex-1 min-h-[calc(100vh-160px)] pb-32">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentSlide}

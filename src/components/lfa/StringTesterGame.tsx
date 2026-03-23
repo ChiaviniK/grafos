@@ -195,7 +195,7 @@ export function StringTesterGame() {
            <h4 className="text-slate-500 text-xs font-black tracking-[0.3em] uppercase mb-8">Máquina de Estados (Boss)</h4>
            
            {/* Visual Diagram 2x2 Grid */}
-           <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[300px]">
+           <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[300px] scale-75 md:scale-100 origin-top">
                
                {/* Node positions */}
                <div className="absolute top-0 left-0">

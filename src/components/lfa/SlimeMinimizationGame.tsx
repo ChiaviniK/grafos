@@ -139,7 +139,7 @@ export function SlimeMinimizationGame() {
         </div>
 
         {/* PARTITIONS (DROP ZONES) */}
-        <div className="md:col-span-8 grid grid-cols-3 gap-4">
+        <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
            {['0', '1', '2'].map((zoneIndex) => (
              <div 
                key={`zone-${zoneIndex}`}
