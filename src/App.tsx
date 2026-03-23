@@ -42,6 +42,7 @@ import { UnimaxLecture } from "./pages/UnimaxLecture";
 import { UnimaxLectureV2 } from "./pages/UnimaxLectureV2";
 import { TccOrientation } from "./pages/TccOrientation";
 import { AFDLesson } from "./pages/AFDLesson";
+import { CryptoClassicLesson } from "./pages/CryptoClassicLesson";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -63,6 +64,7 @@ function App() {
           <Route path="/lfa/aula6" element={<AFDLesson />} />
           <Route path="/seguranca" element={<SegurancaSyllabus />} />
           <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
+          <Route path="/seguranca/aula7" element={<CryptoClassicLesson />} />
           <Route path="/redes" element={<RedesSyllabus />} />
           <Route path="/redes/aula5" element={<RedesLesson5 />} />
           <Route path="/fisica1" element={<Fisica1Syllabus />} />

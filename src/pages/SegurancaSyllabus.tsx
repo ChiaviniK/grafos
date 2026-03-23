@@ -18,7 +18,7 @@ const SYLLABUS: SyllabusItem[] = [
   { id: 4, date: "03/03", title: "Scanning de Redes", type: "pratica", status: "locked" },
   { id: 5, date: "10/03", title: "Agentes de IA e DevSec", type: "teoria", status: "available", link: "/seguranca/aula5", description: "Google Antigravity, Agentes na Prática e Human-in-the-Loop." },
   { id: 6, date: "17/03", title: "Avaliação AP1", type: "prova", status: "locked" },
-  { id: 7, date: "24/03", title: "Criptografia Clássica", type: "teoria", status: "locked" },
+  { id: 7, date: "24/03", title: "Criptografia Clássica", type: "teoria", status: "available", link: "/seguranca/aula7", description: "Cifras históricas, Análise de Frequência e a Máquina Enigma." },
   { id: 8, date: "31/03", title: "Força de Senhas", type: "pratica", status: "locked" },
   { id: 9, date: "07/04", title: "Segurança Web (SQLi)", type: "pratica", status: "locked" },
   { id: 10, date: "14/04", title: "Cripto Assimétrica", type: "teoria", status: "locked" },
