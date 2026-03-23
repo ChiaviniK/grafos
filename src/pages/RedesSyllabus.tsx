@@ -8,7 +8,7 @@ const SYLLABUS = [
   { date: "24/02", title: "Aula 03", status: "completed" },
   { date: "03/03", title: "Aula 04", status: "completed" },
   { date: "10/03", title: "Aula 05", status: "unlocked", path: "/redes/aula5" },
-  { date: "17/03", title: "Aula 06", status: "locked" },
+  { date: "17/03", title: "Aula 06 - TCP vs UDP", status: "unlocked", path: "/redes/aula6" },
   { date: "24/03", title: "Aula 07", status: "locked" },
   { date: "31/03", title: "Aula 08", status: "locked" },
   { date: "07/04", title: "Aula 09", status: "locked" },
