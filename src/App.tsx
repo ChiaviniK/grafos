@@ -41,6 +41,7 @@ import { Fisica2NewLesson5, Fisica2NewLesson6, Fisica2NewLesson7, Fisica2NewLess
 import { UnimaxLecture } from "./pages/UnimaxLecture";
 import { UnimaxLectureV2 } from "./pages/UnimaxLectureV2";
 import { TccOrientation } from "./pages/TccOrientation";
+import { AFDLesson } from "./pages/AFDLesson";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/lfa" element={<LFASyllabus />} />
           <Route path="/lfa/aula4" element={<LFALesson4 />} />
+          <Route path="/lfa/aula6" element={<AFDLesson />} />
           <Route path="/seguranca" element={<SegurancaSyllabus />} />
           <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
           <Route path="/redes" element={<RedesSyllabus />} />

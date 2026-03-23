@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Zap, Globe, Cpu, Droplets, Leaf, ShieldAlert, FastForward, Home } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Zap, Globe, Cpu, Droplets, Leaf, ShieldAlert, FastForward, Home, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SLIDES = [
