@@ -7,6 +7,7 @@ import { AFDLesson } from "./pages/AFDLesson";
 import { AfnLesson } from "./pages/AfnLesson";
 import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
 import SegurancaLesson5 from "./pages/SegurancaLesson5";
+import { SegurancaLesson8 } from "./pages/SegurancaLesson8";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
 import { RedesLesson5 } from "./pages/RedesLesson5";
 import { RedesLesson6 } from "./pages/RedesLesson6";
@@ -43,8 +44,6 @@ import { Fisica2NewLesson1, Fisica2NewLesson2, Fisica2NewLesson3, Fisica2NewLess
 import { Fisica2NewLesson5, Fisica2NewLesson6, Fisica2NewLesson7, Fisica2NewLesson8 } from "./pages/Fisica2NewLessons5to8";
 import { UnimaxLecture } from "./pages/UnimaxLecture";
 import { UnimaxLectureV2 } from "./pages/UnimaxLectureV2";
-import { TccOrientation } from "./pages/TccOrientation";
-import { AFDLesson } from "./pages/AFDLesson";
 import { CryptoClassicLesson } from "./pages/CryptoClassicLesson";
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -69,6 +68,7 @@ function App() {
           <Route path="/seguranca" element={<SegurancaSyllabus />} />
           <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
           <Route path="/seguranca/aula7" element={<CryptoClassicLesson />} />
+          <Route path="/seguranca/aula8" element={<SegurancaLesson8 />} />
           <Route path="/redes" element={<RedesSyllabus />} />
           <Route path="/redes/aula5" element={<RedesLesson5 />} />
           <Route path="/redes/aula6" element={<RedesLesson6 />} />

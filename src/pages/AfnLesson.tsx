@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, SplitSquareHorizontal, Layers, Sparkles, Workflow } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, SplitSquareHorizontal, Layers, Sparkles, Workflow } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MultiverseSimulator } from '../components/lfa/MultiverseSimulator';
 import { SubsetConstructionGame } from '../components/lfa/SubsetConstructionGame';

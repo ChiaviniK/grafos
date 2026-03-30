@@ -78,7 +78,7 @@ export function MultiverseSimulator() {
                 <input 
                   type="text" 
                   value={inputString}
-                  onChange={e => setStatus('idle') || setInputString(e.target.value)}
+                  onChange={e => { setStatus('idle'); setInputString(e.target.value); }}
                   disabled={status === 'running'}
                   className="bg-transparent text-white font-mono text-xl p-3 w-40 text-center outline-none focus:bg-fuchsia-950/20 focus:text-fuchsia-300 transition-colors"
                   placeholder="0 e 1 apenas"
