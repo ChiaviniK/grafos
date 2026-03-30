@@ -17,7 +17,7 @@ const SYLLABUS: SyllabusItem[] = [
   { id: 4, title: "Autômatos Finitos (AFD)", type: "pratica", status: "available", description: "Simulador interativo de Estados e Transições (Mini-jogos).", link: "/lfa/aula4" },
   { id: 5, title: "Avaliação P1", type: "prova", status: "locked" },
   { id: 6, title: "Aprofundamento AFD", type: "teoria", status: "available", link: "/lfa/aula6", description: "Definição formal, minimização e jogos interativos." },
-  { id: 7, title: "Autômatos Não Det. (AFN)", type: "teoria", status: "locked" },
+  { id: 7, title: "Autômatos Não Det. (AFN)", type: "teoria", status: "available", link: "/lfa/aula7" },
   { id: 8, title: "AFN-ε e Expressões Reg.", type: "teoria", status: "locked" },
   { id: 9, title: "Revisão e Lab Prático", type: "pratica", status: "locked" },
   { id: 10, title: "Avaliação P2", type: "prova", status: "locked" },
