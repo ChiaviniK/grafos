@@ -45,6 +45,7 @@ import { Fisica2NewLesson5, Fisica2NewLesson6, Fisica2NewLesson7, Fisica2NewLess
 import { UnimaxLecture } from "./pages/UnimaxLecture";
 import { UnimaxLectureV2 } from "./pages/UnimaxLectureV2";
 import { CryptoClassicLesson } from "./pages/CryptoClassicLesson";
+import { TccOrientation } from "./pages/TccOrientation";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
