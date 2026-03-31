@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ClipboardCheck, Check, Square, Save, RotateCcw } from 'lucide-react';
+import { ClipboardCheck, Check, Save, RotateCcw } from 'lucide-react';
 
 interface Task {
   id: number;
