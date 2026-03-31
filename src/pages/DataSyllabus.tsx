@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -30,6 +30,15 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula2',
     icon: Database
+  },
+  {
+    id: 'data-lab',
+    number: 2.1,
+    title: 'Laboratório de Tratamento',
+    description: 'Estruturação, Processamento de Linguagem Natural, Limpeza e Exportação.',
+    isLocked: false,
+    path: '/data/aula2-1',
+    icon: FlaskConical
   }
 ];
 
