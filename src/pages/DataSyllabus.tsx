@@ -23,11 +23,11 @@ const LESSONS: Lesson[] = [
     icon: Search
   },
   {
-    id: 'sql-basics',
+    id: 'mindset',
     number: 2,
-    title: 'Extração SQL I',
-    description: 'Buscando petróleo na fonte. Selects, Filters e Estrutura Relacional.',
-    isLocked: true,
+    title: 'Mindset Analítico',
+    description: 'Growth Mindset, Resolution Focus e Bug Hunting corporativo.',
+    isLocked: false,
     path: '/data/aula2',
     icon: Database
   }
