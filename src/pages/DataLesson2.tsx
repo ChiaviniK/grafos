@@ -63,6 +63,76 @@ const SLIDES = [
   },
   {
     id: '4',
+    title: 'O Caminho do Aprendizado',
+    subtitle: 'Os Momentos de Ruptura',
+    tag: 'DATA-INTRO',
+    image: '',
+    accent: 'purple',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            Durante sua jornada como Analista, você não irá apenas aprender botões e sintaxes. Especialistas da indústria identificaram 3 momentos críticos ("Breakout Moments") onde a maioria dos profissionais júnior trava:
+         </p>
+         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+             <div className="bg-purple-900/10 p-4 border border-purple-500/20 rounded-xl relative overflow-hidden group hover:border-purple-500/50 transition-colors">
+                 <div className="absolute top-0 right-0 p-2 text-purple-900 font-black text-4xl opacity-20 group-hover:opacity-40 transition-opacity">1</div>
+                 <h4 className="text-purple-400 font-bold mb-2 z-10 relative">O que eles realmente querem?</h4>
+                 <p className="text-sm text-slate-400 relative z-10">Quando um gestor pede "Me dê os dados de vendas", o analista precisa investigar: O que você vai decidir com isso? Que recorte de tempo importa?</p>
+             </div>
+             <div className="bg-fuchsia-900/10 p-4 border border-fuchsia-500/20 rounded-xl relative overflow-hidden group hover:border-fuchsia-500/50 transition-colors">
+                 <div className="absolute top-0 right-0 p-2 text-fuchsia-900 font-black text-4xl opacity-20 group-hover:opacity-40 transition-opacity">2</div>
+                 <h4 className="text-fuchsia-400 font-bold mb-2 z-10 relative">O Caos das Prioridades</h4>
+                 <p className="text-sm text-slate-400 relative z-10">Você terá 5 departamentos diferentes exigindo relatórios para "ontem". Saber categorizar urgência vs esforço é sobrevivência.</p>
+             </div>
+             <div className="bg-pink-900/10 p-4 border border-pink-500/20 rounded-xl relative overflow-hidden group hover:border-pink-500/50 transition-colors">
+                 <div className="absolute top-0 right-0 p-2 text-pink-900 font-black text-4xl opacity-20 group-hover:opacity-40 transition-opacity">3</div>
+                 <h4 className="text-pink-400 font-bold mb-2 z-10 relative">Traduzir o Tecniquês</h4>
+                 <p className="text-sm text-slate-400 relative z-10">Como comunicar que a variância estatística indica um risco sem usar palavras que assustem a diretoria comercial?</p>
+             </div>
+         </div>
+      </div>
+    )
+  },
+  {
+    id: '5',
+    title: 'A Lógica Investigativa',
+    subtitle: 'Resolução de Problemas Passo-a-Passo',
+    tag: 'TIFC1-00',
+    image: '',
+    accent: 'sky',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            A Resolução de Problemas é um esporte de estrutura. Profissionais avançados não "adivinham" respostas, eles seguem um método lógico quando o sistema falha:
+         </p>
+         <ul className="space-y-4">
+             <li className="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                 <div className="w-8 h-8 shrink-0 bg-sky-500/20 rounded-full flex items-center justify-center text-sky-400 font-black">1</div>
+                 <div>
+                    <strong className="text-white block mb-1">Reconhecer e Definir</strong>
+                    <span className="text-sm text-slate-400">Qual é exatamente o erro que estou recebendo? Isolá-lo mentalmente do resto do sistema.</span>
+                 </div>
+             </li>
+             <li className="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                 <div className="w-8 h-8 shrink-0 bg-sky-500/20 rounded-full flex items-center justify-center text-sky-400 font-black">2</div>
+                 <div>
+                    <strong className="text-white block mb-1">Pesquisar de forma Independente</strong>
+                    <span className="text-sm text-slate-400">O Google não é cola, é ferramenta de trabalho. Como formatar a pergunta certa no buscador?</span>
+                 </div>
+             </li>
+             <li className="flex gap-4 items-start bg-slate-900/50 p-4 rounded-xl border border-slate-700/50">
+                 <div className="w-8 h-8 shrink-0 bg-sky-500/20 rounded-full flex items-center justify-center text-sky-400 font-black">3</div>
+                 <div>
+                    <strong className="text-white block mb-1">Testar uma Hipótese Solitária</strong>
+                    <span className="text-sm text-slate-400">Mude apenas UMA variável por vez e rode o relatório de novo. Se mudar cinco coisas juntas, nunca saberá o que consertou.</span>
+                 </div>
+             </li>
+         </ul>
+      </div>
+    )
+  },
+  {
+    id: '6',
     title: 'Orientação a Detalhes',
     subtitle: 'O Analista Paranoico',
     tag: 'BSM-OD',
@@ -81,7 +151,7 @@ const SLIDES = [
     )
   },
   {
-    id: '5',
+    id: '7',
     title: '[GAME] Criptografia Oculta',
     subtitle: 'The Bug Hunt',
     tag: 'INTERAÇÃO',
@@ -92,7 +162,7 @@ const SLIDES = [
     )
   },
   {
-    id: '6',
+    id: '8',
     title: 'Conclusão: Resolução de Problemas',
     subtitle: 'Abraçando a Incerteza',
     tag: 'EPÍLOGO',

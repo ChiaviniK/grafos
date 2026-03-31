@@ -9,14 +9,16 @@ interface CodeLine {
 }
 
 const SNIPPET: CodeLine[] = [
-  { id: 1, text: "SELECT", isBug: false },
-  { id: 2, text: "  customer_id,", isBug: false },
-  { id: 3, text: "  COUNT(transaction_date) AS total_purchases,", isBug: false },
-  { id: 4, text: "  SUM(amount) AS revenue", isBug: false },
-  { id: 5, text: "FROM sales", isBug: false },
-  { id: 6, text: "WHERE status = 'COMPLETED'", isBug: false },
-  { id: 7, text: "GROUP BY customer_id", isBug: false },
-  { id: 8, text: "ODRER BY revenue DESC;", isBug: true } // intentional typo: ODRER instead of ORDER
+  { id: 1, text: "RELATÓRIO DE FECHAMENTO (Q3)", isBug: false },
+  { id: 2, text: "----------------------------", isBug: false },
+  { id: 3, text: "Receita Bruta:   R$ 500.000,00", isBug: false },
+  { id: 4, text: "Impostos (10%):  R$  50.000,00", isBug: false },
+  { id: 5, text: "Custos Operac:   R$ 200.000,00", isBug: false },
+  { id: 6, text: "----------------------------", isBug: false },
+  { id: 7, text: "CÁLCULO DO LUCRO LÍQUIDO:", isBug: false },
+  { id: 8, text: "= Receita Bruta - Impostos + Custos", isBug: true }, // The bug is adding costs instead of subtracting
+  { id: 9, text: " ", isBug: false },
+  { id: 10, text: "LUCRO FINAL: R$ 650.000,00", isBug: false }, // Mathematically wrong result based on the bug
 ];
 
 export function BugHunt() {
@@ -53,7 +55,7 @@ export function BugHunt() {
             <Search className="w-6 h-6" /> The Bug Hunt (Orientação a Detalhe)
          </h4>
          <p className="text-slate-400 text-sm max-w-xl">
-            O Painel Financeiro Diretor travou durante a reunião. O log de erro indica apenas "Syntax Error". Encontre a <strong className="text-rose-400">única linha com erro de digitação</strong> antes que suas tentativas se esgotem.
+            O Diretor Financeiro está prestes a apresentar este relatório de lucros para os investidores, mas os números não batem. Encontre a <strong className="text-rose-400">linha exata com o erro de lógica matemática</strong> antes que ele suba no palco.
          </p>
       </div>
 
@@ -64,8 +66,8 @@ export function BugHunt() {
               <div className="flex items-center gap-4">
                   <Bug className="w-8 h-8 text-rose-500 animate-pulse" />
                   <div>
-                      <div className="text-[10px] text-slate-500 font-black tracking-widest uppercase">Sistema Analítico</div>
-                      <div className="text-sm font-bold text-slate-300">Consulta SQL: finance_monthly_v2.sql</div>
+                      <div className="text-[10px] text-slate-500 font-black tracking-widest uppercase">Sistema de Relatórios</div>
+                      <div className="text-sm font-bold text-slate-300">Documento: fechamento_q3_draft.txt</div>
                   </div>
               </div>
               <div className="flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
@@ -128,17 +130,17 @@ export function BugHunt() {
                           {gameState === 'won' ? (
                               <div className="space-y-4 max-w-md bg-emerald-950/40 p-6 border border-emerald-500/30 rounded-2xl shadow-2xl">
                                   <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto" />
-                                  <h3 className="text-2xl font-black text-white">Syntax Error Neutralizado</h3>
+                                  <h3 className="text-2xl font-black text-white">Erro Lógico Abortado</h3>
                                   <p className="text-slate-300 text-sm">
-                                      Você encontrou <strong className="text-emerald-400">ODRER BY</strong>. Orientação a Detalhes é a capacidade de re-ler milhares de linhas e encontrar a letra que está roubando milhões da empresa. O Painel está no ar!
+                                      Você encontrou o sinal de <strong className="text-emerald-400">+ Custos</strong>. Uma Orientação aos Detalhes aguçada impede que a empresa reporte R$ 650.000 de lucro quando, na verdade, teve apenas R$ 250.000. Você salvou os investidores!
                                   </p>
                               </div>
                           ) : (
                               <div className="space-y-4 max-w-md bg-rose-950/40 p-6 border border-rose-500/30 rounded-2xl shadow-2xl">
                                   <ShieldAlert className="w-16 h-16 text-rose-400 mx-auto" />
-                                  <h3 className="text-2xl font-black text-white">Sistema Crashado</h3>
+                                  <h3 className="text-2xl font-black text-white">Relatório Publicado com Erro</h3>
                                   <p className="text-slate-300 text-sm">
-                                      Você atirou no escuro, fez alterações sem saber onde estava o erro e derrubou o banco de dados principal de Vendas.
+                                      Você não encontrou a falha matemática. O Diretor apresentou o lucro inflado e a empresa foi processada por fraude contábil pelos acionistas...
                                   </p>
                                   <button onClick={resetGame} className="mt-4 px-6 py-2 bg-rose-600 hover:bg-rose-500 text-white rounded-lg font-bold transition-all shadow-lg active:scale-95">
                                       Restaurar Backup e Tentar Novamente
