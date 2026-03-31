@@ -10,7 +10,7 @@ const SYLLABUS = [
   { date: "10/03", title: "Aula 05", status: "unlocked", path: "/redes/aula5" },
   { date: "17/03", title: "Aula 06 - TCP vs UDP", status: "unlocked", path: "/redes/aula6" },
   { date: "24/03", title: "Aula 07", status: "locked" },
-  { date: "31/03", title: "Aula 08", status: "locked" },
+  { date: "31/03", title: "Aula 08 - Firewall & IDS", status: "unlocked", path: "/redes/aula8" },
   { date: "07/04", title: "Aula 09", status: "locked" },
   { date: "14/04", title: "Aula 10", status: "locked" },
   { date: "21/04", title: "Feriado / Recesso", status: "holiday" },
