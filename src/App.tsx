@@ -12,6 +12,7 @@ import { DataSyllabus } from "./pages/DataSyllabus";
 import { DataLesson1 } from "./pages/DataLesson1";
 import { DataLesson2 } from "./pages/DataLesson2";
 import { DataLesson2_1 } from "./pages/DataLesson2_1";
+import { DataLesson2_2 } from "./pages/DataLesson2_2";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
 import { RedesLesson5 } from "./pages/RedesLesson5";
 import { RedesLesson6 } from "./pages/RedesLesson6";
@@ -85,6 +86,7 @@ function App() {
           <Route path="/data/aula1" element={<DataLesson1 />} />
           <Route path="/data/aula2" element={<DataLesson2 />} />
           <Route path="/data/aula2-1" element={<DataLesson2_1 />} />
+          <Route path="/data/aula2-2" element={<DataLesson2_2 />} />
           <Route path="/fisica1" element={<Fisica1Syllabus />} />
           <Route path="/fisica1/aula1" element={<Fisica1Lesson1 />} />
           <Route path="/fisica1/aula2" element={<Fisica1Lesson2 />} />

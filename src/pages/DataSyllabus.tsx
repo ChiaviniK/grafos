@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -39,6 +39,15 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula2-1',
     icon: FlaskConical
+  },
+  {
+    id: 'precision-focus',
+    number: 2.2,
+    title: 'Precisão e Detalhe',
+    description: 'BSM: Orientation to Detail. O custo do erro e a cultura de QA em dados.',
+    isLocked: false,
+    path: '/data/aula2-2',
+    icon: Eye
   }
 ];
 
