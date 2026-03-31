@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Shield, ShieldAlert, Crosshair, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Shield, ShieldAlert, Crosshair, Search, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FirewallConfigurator } from '../components/redes/FirewallConfigurator';
 import { IDSAnalyzer } from '../components/redes/IDSAnalyzer';
@@ -97,6 +97,125 @@ const SLIDES = [
   },
   {
     id: '6',
+    title: 'Topologia: A DMZ',
+    subtitle: 'Zonas Desmilitarizadas',
+    tag: 'ARQUITETURA',
+    image: '',
+    accent: 'slate',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            A segurança da informação nasce na planta da rede. A <strong>DMZ</strong> é uma sub-rede contendo e expondo os serviços externos (como servidores Web e Email) a uma rede maior (Internet).
+         </p>
+         <div className="bg-slate-900/50 p-6 border-l-4 border-slate-500 rounded-xl">
+             <h4 className="text-white font-bold mb-2">Por que Segmentar?</h4>
+             <p className="text-sm text-slate-400">
+                 Se um hacker explorar uma falha no seu site (exposto na Internet), ele não terá acesso direto ao Banco de Dados ou aos arquivos de RH, pois ambos ficam em uma LAN interna protegida por outro Firewall.
+             </p>
+         </div>
+      </div>
+    )
+  },
+  {
+    id: '7',
+    title: 'Stateless vs Stateful',
+    subtitle: 'Evolução da Filtragem',
+    tag: 'FUNDAMENTOS',
+    image: '',
+    accent: 'blue',
+    content: (
+      <div className="space-y-6">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+             <div className="bg-slate-800/30 p-4 border border-blue-500/10 rounded-xl">
+                 <h4 className="text-blue-400 font-bold mb-2">Filtro Stateless (Legado)</h4>
+                 <p className="text-xs text-slate-400">Analisa cada pacote individualmente. Não sabe se aquele pacote pertence a uma conversa já estabelecida. É mais rápido, porém muito inflexível e "cego" ao contexto da conexão TCP (Handshake).</p>
+             </div>
+             <div className="bg-blue-900/20 p-4 border border-blue-500/30 rounded-xl">
+                 <h4 className="text-sky-400 font-bold mb-2">Filtro Stateful (Moderno)</h4>
+                 <p className="text-xs text-slate-400">Mantém uma "Tabela de Estados". Ele lembra que o PC1 iniciou um Handshake com o Server2, e portanto permite que o Server2 responda de volta sem precisar de uma regra explícita dupla.</p>
+             </div>
+         </div>
+      </div>
+    )
+  },
+  {
+    id: '8',
+    title: 'O Problema do HTTPS',
+    subtitle: 'DPI e Inspeção SSL',
+    tag: 'CROSS-MODULE',
+    image: '',
+    accent: 'emerald',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            Lembrando a aula de <strong>Criptografia Clássica</strong>: o tráfego moderno é cifrado de ponta-a-ponta (HTTPS/SSL). Como o IDS/IPS pode ler a carta se ela está codificada?
+         </p>
+         <div className="flex gap-4 p-4 bg-emerald-900/10 rounded-xl border border-emerald-500/30">
+             <Lock className="w-8 h-8 text-emerald-400 shrink-0" />
+             <p className="text-sm text-slate-300">Equipamentos modernos realizam <strong>SSL Inspection (Men-in-the-Middle Controlado)</strong>. A empresa instala um certificado corporativo nos PCs dos funcionários, permitindo que o Firewall decifre, leia (DPI), verifique vírus, recifre e envie à internet, quebrando a privacidade em prol da segurança.</p>
+         </div>
+      </div>
+    )
+  },
+  {
+    id: '9',
+    title: 'Ameaças Internas',
+    subtitle: 'Movimentação Lateral',
+    tag: 'SOC/CYBER',
+    image: '',
+    accent: 'rose',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            Historicamente, o foco sempre foi criar um "Casca Grossa e Miolo Mole". E se o hacker mandar um Phishing por e-mail e <span className="text-rose-400 font-bold">o funcionário clicar?</span> O atacante agora está dentro da rede local.
+         </p>
+         <p className="text-slate-400 text-sm">
+            Sem restrições internas, ocorre a <strong>Movimentação Lateral</strong>: O hacker pula do PC da Recepção até o Servidor de Nomes (AD) livremente. Por isso, Firewalls "East-West" (que separam departamentos internos) são tão essenciais quanto os "North-South" (Internet-LAN).
+         </p>
+      </div>
+    )
+  },
+  {
+    id: '10',
+    title: 'Zero Trust Network',
+    subtitle: 'Nunca Confie, Sempre Verifique',
+    tag: 'FUTURO DA SEGURANÇA',
+    image: '',
+    accent: 'indigo',
+    content: (
+      <div className="space-y-6 flex flex-col items-center text-center">
+         <ShieldAlert className="w-12 h-12 text-indigo-400 mb-2" />
+         <p className="text-xl text-slate-300 max-w-2xl leading-relaxed">
+            A evolução final do Firewall é a Morte do Perímetro. O paradigma moderno é o <strong>Zero Trust</strong>.
+         </p>
+         <p className="text-sm text-slate-400 max-w-xl">
+             Não importa se você está plugado fisicamente no cabo azul dentro da sala do CEO. O sistema exige a verificação contínua de Identidade (MFA), Integridade do Dispositivo (Antivírus em dia) e Privilégio Mínimo (Você só acessa o que precisa para seu cargo).
+         </p>
+      </div>
+    )
+  },
+  {
+    id: '11',
+    title: 'Honeypots',
+    subtitle: 'Atraindo o Atacante',
+    tag: 'BLUE TEAM',
+    image: '',
+    accent: 'fuchsia',
+    content: (
+      <div className="space-y-6">
+         <p className="text-slate-300">
+            Enquanto o Firewall repele e o IDS detecta, há uma terceira classe passiva: O Pote de Mel.
+         </p>
+         <div className="bg-fuchsia-900/10 p-6 rounded-xl border-l-4 border-fuchsia-500">
+             <p className="text-sm text-slate-400">
+                 Honeypots são servidores intencionalmente vulneráveis expostos na DMZ (ex: Com nomes chamativos como "Payroll_DB_Backup") que servem como alarme. Nenhum usuário legítimo tem motivos para acessar um Honeypot. Se o IDS alertar um scan nessa máquina, a equipe sabe com 100% de certeza que há um invasor testando o perímetro.
+             </p>
+         </div>
+      </div>
+    )
+  },
+  {
+    id: '12',
     title: 'Arquitetura Defense-in-Depth',
     subtitle: 'As Camadas da Cebola',
     tag: 'CONCLUSÃO',
