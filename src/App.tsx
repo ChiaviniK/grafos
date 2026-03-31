@@ -11,6 +11,7 @@ import { SegurancaLesson8 } from "./pages/SegurancaLesson8";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
 import { RedesLesson5 } from "./pages/RedesLesson5";
 import { RedesLesson6 } from "./pages/RedesLesson6";
+import { RedesLesson7 } from "./pages/RedesLesson7";
 import { Fisica1Syllabus } from "./pages/Fisica1Syllabus";
 import { Fisica2Syllabus } from "./pages/Fisica2Syllabus";
 import { Fisica3Syllabus } from "./pages/Fisica3Syllabus";
@@ -73,6 +74,7 @@ function App() {
           <Route path="/redes" element={<RedesSyllabus />} />
           <Route path="/redes/aula5" element={<RedesLesson5 />} />
           <Route path="/redes/aula6" element={<RedesLesson6 />} />
+          <Route path="/redes/aula7" element={<RedesLesson7 />} />
           <Route path="/fisica1" element={<Fisica1Syllabus />} />
           <Route path="/fisica1/aula1" element={<Fisica1Lesson1 />} />
           <Route path="/fisica1/aula2" element={<Fisica1Lesson2 />} />
