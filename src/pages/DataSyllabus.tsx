@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -48,6 +48,15 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula2-2',
     icon: Eye
+  },
+  {
+    id: 'roles-responsibilities',
+    number: 3,
+    title: 'Papéis no Ecossistema',
+    description: 'Analista, Cientista e Engenheiro de Dados: quem faz o quê, quais ferramentas dominam e que trilha de carreira seguir.',
+    isLocked: false,
+    path: '/data/aula3',
+    icon: Users
   }
 ];
 
