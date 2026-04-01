@@ -20,7 +20,7 @@ export function Home() {
         {/* ETEC Section */}
         <section className="mb-16">
            <div className="flex items-center gap-3 mb-6">
-              <span className="bg-rose-500/20 text-rose-400 font-bold px-3 py-1 rounded-full text-sm border border-rose-500/30">ETEC</span>
+              <span className="bg-rose-500/20 text-rose-400 font-bold px-3 py-1 rounded-full text-sm border border-rose-500/30">Ensino Médio</span>
               <h2 className="text-2xl font-semibold text-slate-200">Ensino Médio e Técnico</h2>
            </div>
            
@@ -81,7 +81,7 @@ export function Home() {
         {/* UNIMAX Section */}
         <section>
            <div className="flex items-center gap-3 mb-6">
-              <span className="bg-blue-500/20 text-blue-400 font-bold px-3 py-1 rounded-full text-sm border border-blue-500/30">UNIMAX</span>
+              <span className="bg-blue-500/20 text-blue-400 font-bold px-3 py-1 rounded-full text-sm border border-blue-500/30">Graduação</span>
               <h2 className="text-2xl font-semibold text-slate-200">Ensino Superior</h2>
            </div>
            
@@ -199,7 +199,7 @@ export function Home() {
                      <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center mb-4 group-hover:bg-emerald-500/20 transition-colors border border-slate-700 group-hover:border-emerald-500/30">
                          <FileText className="w-6 h-6 text-slate-500 group-hover:text-emerald-400" />
                      </div>
-                     <h3 className="text-xl font-bold mb-2 text-slate-100">Orientação<br/>TCC UNIMAX</h3>
+                     <h3 className="text-xl font-bold mb-2 text-slate-100">Orientação<br/>de TCC</h3>
                      <p className="text-slate-500 text-sm mb-4">Cronograma de 8 semanas e Template Oficial</p>
                   </div>
                   <button className="mt-4 bg-emerald-600/10 text-emerald-500 group-hover:bg-emerald-600 group-hover:text-white py-2 rounded-lg font-bold w-full transition-colors flex items-center justify-center gap-2 border border-emerald-500/30 group-hover:border-emerald-500">
