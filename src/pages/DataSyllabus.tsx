@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -57,6 +57,33 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula3',
     icon: Users
+  },
+  {
+    id: 'hello-world',
+    number: 3.1,
+    title: 'Hello World Python',
+    description: 'Introdução à programação, sintaxe, literalidade e o primeiro código no simulador Colab.',
+    isLocked: false,
+    path: '/data/aula3-1',
+    icon: Code
+  },
+  {
+    id: 'version-control',
+    number: 3.2,
+    title: 'Controle de Versão',
+    description: 'A importância de rastrear mudanças. Snapshots, commits e a máquina do tempo dos dados.',
+    isLocked: false,
+    path: '/data/aula3-2',
+    icon: History
+  },
+  {
+    id: 'git-log-github',
+    number: 3.3,
+    title: 'Git & GitHub Lab',
+    description: 'Prática real: git init, add, commit e push. Sincronizando seu código local com a nuvem.',
+    isLocked: false,
+    path: '/data/aula3-3',
+    icon: Github
   }
 ];
 
