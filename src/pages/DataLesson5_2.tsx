@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Box, Type, Hash, ArrowRight, CheckCircle2, FlaskConical } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Type, Hash, ArrowRight, CheckCircle2, FlaskConical } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { VariableLab } from '../components/data/aula5/VariableLab';

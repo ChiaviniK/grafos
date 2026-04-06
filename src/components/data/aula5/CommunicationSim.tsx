@@ -126,7 +126,7 @@ export function CommunicationSim() {
             </div>
             <div className="mt-auto pt-6 border-t border-slate-800">
                <div className="flex items-center gap-2 text-slate-600">
-                  < स्मार्टफोन className="w-4 h-4" />
+                  <Smartphone className="w-4 h-4" />
                   <span className="text-[10px] font-bold">Simulação de Diálogo Ativa</span>
                </div>
             </div>

@@ -3,6 +3,7 @@ import { GlobalHeader } from "./components/GlobalHeader";
 import { Home } from "./pages/Home";
 import { LFASyllabus } from "./pages/LFASyllabus";
 import { LFALesson4 } from "./pages/LFALesson4";
+import { LFALesson8 } from "./pages/LFALesson8";
 import { AFDLesson } from "./pages/AFDLesson";
 import { AfnLesson } from "./pages/AfnLesson";
 import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
@@ -81,6 +82,7 @@ function App() {
           <Route path="/lfa/aula4" element={<LFALesson4 />} />
           <Route path="/lfa/aula6" element={<AFDLesson />} />
           <Route path="/lfa/aula7" element={<AfnLesson />} />
+          <Route path="/lfa/aula8" element={<LFALesson8 />} />
           <Route path="/seguranca" element={<SegurancaSyllabus />} />
           <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
           <Route path="/seguranca/aula7" element={<CryptoClassicLesson />} />

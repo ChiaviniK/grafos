@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, MessageSquare, Ear, Mic2, ArrowRight, CheckCircle2, UserCircle2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Ear, Mic2, ArrowRight, CheckCircle2, UserCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { CommunicationSim } from '../components/data/aula5/CommunicationSim';

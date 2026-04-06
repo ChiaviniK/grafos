@@ -18,7 +18,7 @@ const SYLLABUS: SyllabusItem[] = [
   { id: 5, title: "Avaliação P1", type: "prova", status: "locked" },
   { id: 6, title: "Aprofundamento AFD", type: "teoria", status: "available", link: "/lfa/aula6", description: "Definição formal, minimização e jogos interativos." },
   { id: 7, title: "Autômatos Não Det. (AFN)", type: "teoria", status: "available", link: "/lfa/aula7" },
-  { id: 8, title: "AFN-ε e Expressões Reg.", type: "teoria", status: "locked" },
+  { id: 8, title: "AFN-ε e Expressões Reg.", type: "teoria", status: "available", link: "/lfa/aula8", description: "Transições Epsilon, Fecho-ε, Algoritmo de Thompson e Regex aplicados." },
   { id: 9, title: "Revisão e Lab Prático", type: "pratica", status: "locked" },
   { id: 10, title: "Avaliação P2", type: "prova", status: "locked" },
   { id: 11, title: "Autômato com Pilha", type: "teoria", status: "locked" },

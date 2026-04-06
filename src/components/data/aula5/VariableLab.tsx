@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Hash, Type, Layout, Trash2, ArrowRight, Save, Play } from "lucide-react";
+import { Box, Hash, Type, Layout, Trash2, Save, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // --- Types ---
