@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github, Puzzle, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -84,6 +84,42 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula3-3',
     icon: Github
+  },
+  {
+    id: 'logic-toy',
+    number: 5.1,
+    title: 'Code a Toy: Lógica',
+    description: 'Pensamento algorítmico e sequenciamento de comandos usando o Pink Monster.',
+    isLocked: false,
+    path: '/data/aula5-1',
+    icon: Puzzle
+  },
+  {
+    id: 'variable-lab',
+    number: 5.2,
+    title: 'Variáveis e Dados',
+    description: 'Entenda como o computador armazena informações em contêineres e etiquetas.',
+    isLocked: false,
+    path: '/data/aula5-2',
+    icon: Database
+  },
+  {
+    id: 'comm-skills',
+    number: 5.3,
+    title: 'Comunicação Efetiva',
+    description: 'BSM: Assertividade, escuta ativa e como transmitir mensagens sem ruídos.',
+    isLocked: false,
+    path: '/data/aula5-3',
+    icon: MessageSquare
+  },
+  {
+    id: 'digital-comm',
+    number: 5.4,
+    title: 'Comunidade Digital',
+    description: 'Construindo conexões e assumindo compromissos em ambientes virtuais.',
+    isLocked: false,
+    path: '/data/aula5-4',
+    icon: Users
   }
 ];
 
