@@ -1,11 +1,11 @@
 import { Users, FlaskConical, BookOpen } from "lucide-react";
 
 const GROUPS = [
-  { id: 1, title: "NPCs de Jogos (Game AI)", color: "violet", slide: "Slide 7" },
+  { id: 1, title: "Medicina — Arritmias em ECG", color: "violet", slide: "Slide 7" },
   { id: 2, title: "Mudanças Climáticas (Big Data)", color: "sky", slide: "Slide 8" },
-  { id: 3, title: "Mercado Financeiro (Crypto)", color: "amber", slide: "Slide 9" },
-  { id: 4, title: "Genômica / DNA", color: "emerald", slide: "Slide 10" },
-  { id: 5, title: "Smart Contracts / DAO", color: "orange", slide: "Slide 11" },
+  { id: 3, title: "Desinformação — Bots no Twitter/X", color: "amber", slide: "Slide 9" },
+  { id: 4, title: "Indústria 4.0 — Robôs CNC", color: "emerald", slide: "Slide 10" },
+  { id: 5, title: "Astronomia — Exoplanetas / Pulsares", color: "orange", slide: "Slide 11" },
   { id: 6, title: "Cidades Inteligentes", color: "cyan", slide: "Slide 12" },
   { id: 7, title: "Cibersegurança (DPI)", color: "rose", slide: "Slide 13" },
   { id: 8, title: "Ética em IA (LLMs)", color: "fuchsia", slide: "Slide 14" },
