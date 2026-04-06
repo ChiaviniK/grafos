@@ -65,7 +65,7 @@ import { TccOrientation } from "./pages/TccOrientation";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#020617] flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "var(--bg-base)" }}>
       <GlobalHeader />
       <main className="flex-1">{children}</main>
     </div>
