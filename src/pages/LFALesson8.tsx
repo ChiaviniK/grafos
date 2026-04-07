@@ -7,14 +7,11 @@ import { LFASlide8_4 } from "../components/slides/LFALesson8/LFASlide8_4";
 import { LFASlide8_5 } from "../components/slides/LFALesson8/LFASlide8_5";
 import { LFASlide8_6 } from "../components/slides/LFALesson8/LFASlide8_6";
 import { LFASlide8_7 } from "../components/slides/LFALesson8/LFASlide8_7";
-import { LFASlide8_8 } from "../components/slides/LFALesson8/LFASlide8_8";
-import { LFASlide8_9 } from "../components/slides/LFALesson8/LFASlide8_9";
-import { LFASlide8_10 } from "../components/slides/LFALesson8/LFASlide8_10";
-import { LFASlide8_11 } from "../components/slides/LFALesson8/LFASlide8_11";
+import { LFASlide8_Topics1to3 } from "../components/slides/LFALesson8/LFASlide8_8";
+import { LFASlide8_Topics4to6 } from "../components/slides/LFALesson8/LFASlide8_9";
+import { LFASlide8_Topics7to9 } from "../components/slides/LFALesson8/LFASlide8_10";
+import { LFASlide8_Topics10to12 } from "../components/slides/LFALesson8/LFASlide8_11";
 import { LFASlide8_12 } from "../components/slides/LFALesson8/LFASlide8_12";
-import { LFASlide8_13 } from "../components/slides/LFALesson8/LFASlide8_13";
-import { LFASlide8_14 } from "../components/slides/LFALesson8/LFASlide8_14";
-import { LFASlide8_15 } from "../components/slides/LFALesson8/LFASlide8_15";
 
 const SLIDES = [
   <LFASlide8_1 key="s1" />,
@@ -24,14 +21,11 @@ const SLIDES = [
   <LFASlide8_5 key="s5" />,
   <LFASlide8_6 key="s6" />,
   <LFASlide8_7 key="s7" />,
-  <LFASlide8_8 key="s8" />,
-  <LFASlide8_9 key="s9" />,
-  <LFASlide8_10 key="s10" />,
-  <LFASlide8_11 key="s11" />,
+  <LFASlide8_Topics1to3 key="s8" />,
+  <LFASlide8_Topics4to6 key="s9" />,
+  <LFASlide8_Topics7to9 key="s10" />,
+  <LFASlide8_Topics10to12 key="s11" />,
   <LFASlide8_12 key="s12" />,
-  <LFASlide8_13 key="s13" />,
-  <LFASlide8_14 key="s14" />,
-  <LFASlide8_15 key="s15" />,
 ];
 
 export function LFALesson8() {

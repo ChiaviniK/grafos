@@ -1,14 +1,18 @@
 import { Users, FlaskConical, BookOpen } from "lucide-react";
 
 const GROUPS = [
-  { id: 1, title: "Medicina — Arritmias em ECG", color: "violet", slide: "Slide 7" },
-  { id: 2, title: "Mudanças Climáticas (Big Data)", color: "sky", slide: "Slide 8" },
-  { id: 3, title: "Desinformação — Bots no Twitter/X", color: "amber", slide: "Slide 9" },
-  { id: 4, title: "Indústria 4.0 — Robôs CNC", color: "emerald", slide: "Slide 10" },
-  { id: 5, title: "Astronomia — Exoplanetas / Pulsares", color: "orange", slide: "Slide 11" },
-  { id: 6, title: "Cidades Inteligentes", color: "cyan", slide: "Slide 12" },
-  { id: 7, title: "Cibersegurança (DPI)", color: "rose", slide: "Slide 13" },
-  { id: 8, title: "Ética em IA (LLMs)", color: "fuchsia", slide: "Slide 14" },
+  { id: 1, title: "Compiladores — Scanners", color: "violet", slide: "Slide 8" },
+  { id: 2, title: "Bioinformática — DNA Gaps", color: "sky", slide: "Slide 8" },
+  { id: 3, title: "Cibersegurança (DPI)", color: "rose", slide: "Slide 8" },
+  { id: 4, title: "Indústria 4.0 — Robôs", color: "emerald", slide: "Slide 9" },
+  { id: 5, title: "Astronomia — Exoplanetas", color: "orange", slide: "Slide 9" },
+  { id: 6, title: "Cidades Inteligentes", color: "cyan", slide: "Slide 9" },
+  { id: 7, title: "Segurança de LLM (IA)", color: "rose", slide: "Slide 10" },
+  { id: 8, title: "Sports Analytics (Táticas)", color: "amber", slide: "Slide 10" },
+  { id: 9, title: "Smart Contracts (Web3)", color: "blue", slide: "Slide 10" },
+  { id: 10, title: "NLP — Morfologia", color: "sky", slide: "Slide 11" },
+  { id: 11, title: "Hardware — IoT", color: "violet", slide: "Slide 11" },
+  { id: 12, title: "Finanças — HFT", color: "emerald", slide: "Slide 11" },
 ];
 
 const colorMap: Record<string, string> = {
@@ -20,6 +24,7 @@ const colorMap: Record<string, string> = {
   cyan: "bg-cyan-500/10 border-cyan-500/40 text-cyan-400",
   rose: "bg-rose-500/10 border-rose-500/40 text-rose-400",
   fuchsia: "bg-fuchsia-500/10 border-fuchsia-500/40 text-fuchsia-400",
+  blue: "bg-blue-500/10 border-blue-500/40 text-blue-400",
 };
 
 export function LFASlide8_6() {
@@ -39,14 +44,14 @@ export function LFASlide8_6() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
         {GROUPS.map(g => (
           <div key={g.id} className={`border-2 rounded-2xl p-4 flex flex-col gap-2 ${colorMap[g.color]}`}>
             <div className="flex items-center justify-between">
               <span className="font-black text-2xl opacity-30">G{g.id}</span>
               <span className="text-[10px] font-bold uppercase opacity-60">{g.slide}</span>
             </div>
-            <p className="font-bold text-sm leading-tight">{g.title}</p>
+            <p className="font-bold text-[13px] leading-tight">{g.title}</p>
           </div>
         ))}
       </div>
