@@ -11,7 +11,7 @@ const SYLLABUS = [
   { date: "17/03", title: "Aula 06 - TCP vs UDP", status: "unlocked", path: "/redes/aula6" },
   { date: "24/03", title: "Aula 07", status: "locked" },
   { date: "31/03", title: "Aula 08 - Firewall & IDS", status: "unlocked", path: "/redes/aula8" },
-  { date: "07/04", title: "Aula 09", status: "locked" },
+  { date: "07/04", title: "Aula 09 - VLANs e Segmentação", status: "unlocked", path: "/redes/aula9" },
   { date: "14/04", title: "Aula 10", status: "locked" },
   { date: "21/04", title: "Feriado / Recesso", status: "holiday" },
   { date: "28/04", title: "Aula 11", status: "locked" },

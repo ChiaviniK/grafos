@@ -9,6 +9,7 @@ import { AfnLesson } from "./pages/AfnLesson";
 import { SegurancaSyllabus } from "./pages/SegurancaSyllabus";
 import SegurancaLesson5 from "./pages/SegurancaLesson5";
 import { SegurancaLesson8 } from "./pages/SegurancaLesson8";
+import { SegurancaLesson9 } from "./pages/SegurancaLesson9";
 import { DataSyllabus } from "./pages/DataSyllabus";
 import { DataLesson1 } from "./pages/DataLesson1";
 import { DataLesson2 } from "./pages/DataLesson2";
@@ -22,11 +23,13 @@ import { DataLesson5_1 } from "./pages/DataLesson5_1";
 import { DataLesson5_2 } from "./pages/DataLesson5_2";
 import { DataLesson5_3 } from "./pages/DataLesson5_3";
 import { DataLesson5_4 } from "./pages/DataLesson5_4";
+import { DataLesson6_1 } from "./pages/DataLesson6_1";
 import { RedesSyllabus } from "./pages/RedesSyllabus";
 import { RedesLesson5 } from "./pages/RedesLesson5";
 import { RedesLesson6 } from "./pages/RedesLesson6";
 import { RedesLesson7 } from "./pages/RedesLesson7";
 import { RedesLesson8 } from "./pages/RedesLesson8";
+import { RedesLesson9 } from "./pages/RedesLesson9";
 import { Fisica1Syllabus } from "./pages/Fisica1Syllabus";
 import { Fisica2Syllabus } from "./pages/Fisica2Syllabus";
 import { Fisica3Syllabus } from "./pages/Fisica3Syllabus";
@@ -87,11 +90,13 @@ function App() {
           <Route path="/seguranca/aula5" element={<SegurancaLesson5 />} />
           <Route path="/seguranca/aula7" element={<CryptoClassicLesson />} />
           <Route path="/seguranca/aula8" element={<SegurancaLesson8 />} />
+          <Route path="/seguranca/aula9" element={<SegurancaLesson9 />} />
           <Route path="/redes" element={<RedesSyllabus />} />
           <Route path="/redes/aula5" element={<RedesLesson5 />} />
           <Route path="/redes/aula6" element={<RedesLesson6 />} />
           <Route path="/redes/aula7" element={<RedesLesson7 />} />
           <Route path="/redes/aula8" element={<RedesLesson8 />} />
+          <Route path="/redes/aula9" element={<RedesLesson9 />} />
           <Route path="/data" element={<DataSyllabus />} />
           <Route path="/data/aula1" element={<DataLesson1 />} />
           <Route path="/data/aula2" element={<DataLesson2 />} />
@@ -105,6 +110,7 @@ function App() {
           <Route path="/data/aula5-2" element={<DataLesson5_2 />} />
           <Route path="/data/aula5-3" element={<DataLesson5_3 />} />
           <Route path="/data/aula5-4" element={<DataLesson5_4 />} />
+          <Route path="/data/aula6-1" element={<DataLesson6_1 />} />
           <Route path="/fisica1" element={<Fisica1Syllabus />} />
           <Route path="/fisica1/aula1" element={<Fisica1Lesson1 />} />
           <Route path="/fisica1/aula2" element={<Fisica1Lesson2 />} />

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github, Puzzle, MessageSquare } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github, Puzzle, MessageSquare, GitBranch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -120,6 +120,15 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula5-4',
     icon: Users
+  },
+  {
+    id: 'logic-branching',
+    number: 6.1,
+    title: 'Branching: Decisão',
+    description: 'Ensinando a máquina a pensar. Estruturas condicionais IF e ELSE para controle de fluxo.',
+    isLocked: false,
+    path: '/data/aula6-1',
+    icon: GitBranch
   }
 ];
 
