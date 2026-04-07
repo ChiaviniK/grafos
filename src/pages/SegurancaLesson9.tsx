@@ -95,7 +95,6 @@ export function SegurancaLesson9() {
         <div className="space-y-6">
           <SQLiSimulator 
              onComplete={(score) => setScores(s => ({ ...s, sqli: score }))}
-             hasCompleted={scores.sqli > 0} 
           />
         </div>
       )
