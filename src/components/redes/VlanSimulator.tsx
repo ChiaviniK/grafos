@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Network, Monitor, AlertTriangle, CheckCircle2, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -75,7 +75,7 @@ export function VlanSimulator({ onComplete }: VlanSimulatorProps) {
           <div className="absolute top-2 left-4 text-[10px] font-mono text-slate-500 font-bold uppercase">Cisco Catalyst 2960</div>
           
           <div className="flex justify-center gap-4 mt-4">
-             {DEPARTMENTS.map((dept, i) => {
+             {DEPARTMENTS.map((dept) => {
                 const configVlan = portConfigs[dept.id];
                 const isTarget = activeBroadcast === dept.id; // Sender
                 const receivesBroadcast = status === 'testing' && portConfigs[activeBroadcast!] === configVlan && !isTarget;

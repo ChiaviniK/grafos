@@ -20,7 +20,7 @@ export function ReportCard({ scores }: ReportCardProps) {
 
   const totalScore = scores.sqli + scores.xss + scores.password + scores.dragDrop + scores.quiz.reduce((a,b)=>a+b, 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = () => {
     // We do NOT preventDefault here because we want the browser to natively submit the form 
     // to the hidden iframe. We just set the state to loading/success.
     setStatus('loading');

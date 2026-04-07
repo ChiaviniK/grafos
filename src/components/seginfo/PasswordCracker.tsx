@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ShieldAlert, CheckCircle2, Terminal, Key, Database } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface PasswordCrackerProps {
   onComplete?: (score: number) => void;

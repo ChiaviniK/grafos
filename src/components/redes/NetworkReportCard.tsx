@@ -21,7 +21,7 @@ export function NetworkReportCard({ scores }: NetworkReportCardProps) {
 
   const totalScore = scores.ipLab + scores.tcpLab + scores.sshLab + scores.firewallLab + scores.vlanLab + scores.quiz.reduce((a,b)=>a+b, 0);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = () => {
     setStatus('loading');
     setTimeout(() => {
         setStatus('success');

@@ -4,16 +4,12 @@ import { Database, ShieldAlert, CheckCircle2, ShieldX, TerminalSquare, SearchCod
 
 interface SQLiSimulatorProps {
   onComplete?: (score: number) => void;
-  hasCompleted?: boolean;
 }
 
-export function SQLiSimulator({ onComplete, hasCompleted }: SQLiSimulatorProps) {
+export function SQLiSimulator({ onComplete }: SQLiSimulatorProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState<'idle' | 'success' | 'fail' | 'typing'>('idle');
-
-  // Simulated SQL Query construction (VULNERABLE)
-  const simulatedQuery = `SELECT * FROM users\nWHERE username = '${username}'\nAND password = '${password}';`;
 
   // Mini-evaluator for SQLi
   const evaluateInjection = (e: React.FormEvent) => {

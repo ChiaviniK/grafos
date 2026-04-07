@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Bug, CheckCircle2, History } from 'lucide-react';
+import { Search, Bug, CheckCircle2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface XSSSimulatorProps {
