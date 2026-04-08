@@ -156,7 +156,6 @@ export function ReportCard({ scores }: ReportCardProps) {
                   required
                   value={nome}
                   onChange={e => setNome(e.target.value)}
-                  disabled={status === 'loading'}
                   className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="Seu nome"
                 />
@@ -172,7 +171,6 @@ export function ReportCard({ scores }: ReportCardProps) {
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
-                  disabled={status === 'loading'}
                   className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="aluno@instituicao.edu.br"
                 />
@@ -188,7 +186,6 @@ export function ReportCard({ scores }: ReportCardProps) {
                   required
                   value={ra}
                   onChange={e => setRa(e.target.value)}
-                  disabled={status === 'loading'}
                   className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="EX: 123456"
                 />
