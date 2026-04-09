@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github, Puzzle, MessageSquare, GitBranch } from 'lucide-react';
+import { Database, Search, ChevronRight, Lock, BookOpen, FlaskConical, Eye, Users, Code, History, Github, Puzzle, MessageSquare, GitBranch, Crosshair } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Lesson {
@@ -129,6 +129,15 @@ const LESSONS: Lesson[] = [
     isLocked: false,
     path: '/data/aula6-1',
     icon: GitBranch
+  },
+  {
+    id: 'problem-solving',
+    number: 9,
+    title: 'Resolução de Problemas',
+    description: 'Processo das 4 Etapas, visualização de dados com SQL, Excel e estratégias mentais para resolver gargalos corporativos.',
+    isLocked: false,
+    path: '/data/aula9',
+    icon: Crosshair
   }
 ];
 
